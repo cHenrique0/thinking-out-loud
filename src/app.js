@@ -13,11 +13,11 @@ const port = process.env.APP_PORT;
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
-app.set("views", "./views");
+app.set("views", "./src/views");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("./src/public"));
 
 // Session middleware
 app.use(

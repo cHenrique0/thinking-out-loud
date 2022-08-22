@@ -1,0 +1,30 @@
+const { Model, DataTypes } = require("sequelize");
+const connection = require("../database/connection");
+const User = require("./User");
+
+class Thought extends Model {}
+
+Thought.init(
+  {
+    uuid: {
+      type: DataTypes.UUID,
+      defaultType: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
+      unique: true,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize: connection,
+    tableName: "thougts",
+  }
+);
+
+Thought.belongsTo(User);
+User.hasMany(Thought);
+
+module.exports = Thought;

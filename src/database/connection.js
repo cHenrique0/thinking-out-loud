@@ -3,9 +3,6 @@ const dbConfig = require("./config/config");
 
 const connection = new Sequelize(dbConfig);
 
-// Init models
-// Model.init(connection)
-
 connection
   .authenticate()
   .then(() => console.log(`* Database successfully connected.`))
