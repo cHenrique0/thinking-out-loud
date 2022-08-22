@@ -4,7 +4,7 @@ const dbConfig = require("./config/config");
 const connection = new Sequelize(dbConfig);
 
 // Init models
-// code here
+// Model.init(connection)
 
 connection
   .authenticate()
