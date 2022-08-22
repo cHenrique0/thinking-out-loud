@@ -1,0 +1,36 @@
+{
+  "name": "thinking-out-loud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/cHenrique0/thinking-out-loud.git"
+  },
+  "author": "Claudio Henrique <claudio.alexandre@discente.ufma.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cHenrique0/thinking-out-loud/issues"
+  },
+  "homepage": "https://github.com/cHenrique0/thinking-out-loud#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
+    "express": "^4.18.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.4",
+    "session-file-store": "^1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
