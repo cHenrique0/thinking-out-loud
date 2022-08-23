@@ -5,6 +5,8 @@ const dbConnection = require("./database/connection");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const flash = require("express-flash");
+const ThoughtController = require("./controllers/ThoughtController");
+const auhtRouter = require("./routes/authRoutes");
 
 dotenv.config();
 
@@ -32,15 +34,15 @@ app.use(
     }),
     cookie: {
       secure: false,
-      maxAge: 360000,
-      expires: new Date(Date.now() + 360000),
+      maxAge: 3600000,
+      expires: new Date(Date.now() + 3600000),
       httpOnly: true,
     },
   })
 );
 
 // Flash messages
-app.use(flash);
+app.use(flash());
 
 // Set session to response
 app.use((request, response, next) => {
@@ -50,6 +52,9 @@ app.use((request, response, next) => {
 
   next();
 });
+
+app.use("/", auhtRouter);
+app.use("/", ThoughtController.getAllThoughts);
 
 dbConnection
   .sync()
