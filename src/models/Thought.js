@@ -8,7 +8,7 @@ Thought.init(
   {
     uuid: {
       type: DataTypes.UUID,
-      defaultType: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
       unique: true,
