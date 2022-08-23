@@ -20,7 +20,7 @@ Thought.init(
   },
   {
     sequelize: connection,
-    tableName: "thougts",
+    tableName: "thoughts",
   }
 );
 
