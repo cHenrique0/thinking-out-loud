@@ -5,6 +5,7 @@ const dbConnection = require("./database/connection");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const flash = require("express-flash");
+const thoughtRouter = require("./routes/thoughtRoutes");
 const ThoughtController = require("./controllers/ThoughtController");
 const auhtRouter = require("./routes/authRoutes");
 
@@ -54,6 +55,7 @@ app.use((request, response, next) => {
 });
 
 app.use("/", auhtRouter);
+app.use("/thoughts", thoughtRouter);
 app.use("/", ThoughtController.getAllThoughts);
 
 dbConnection
