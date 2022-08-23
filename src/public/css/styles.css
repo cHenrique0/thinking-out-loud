@@ -58,6 +58,82 @@
   padding: 2em;
 }
 
+/* Login and Sign up */
+.auth-container {
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #f6982d;
+  border-radius: 20px;
+  padding: 1em;
+}
+
+.auth-container h2 {
+  margin-bottom: 1em;
+  color: #fff;
+  padding: 0.3em;
+  /* border-left: 4px solid #f6982d; */
+  text-align: center;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.form-control label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.form-control input,
+.form-control textarea {
+  font-size: 1em;
+  padding: 7px;
+  border-radius: 3px;
+  border: 1px solid #f6982d;
+}
+
+form button[type='submit'],
+.btn {
+  background-color: transparent;
+  color: #f6982d;
+  border: 2px solid #f6982d;
+  padding: 0.5em 1.3em;
+  margin-bottom: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+form button[type='submit']:hover,
+.btn:hover {
+  background-color: #f6982d;
+  color: #fff;
+}
+
+.btn-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-options .options {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btn-options .options a {
+  font-weight: bold;
+  color: #f6982d;
+}
+
 /* Footer */
 footer {
   height: 55px;
