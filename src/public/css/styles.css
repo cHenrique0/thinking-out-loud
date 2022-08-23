@@ -58,6 +58,19 @@
   padding: 2em;
 }
 
+/* Messages */
+.message {
+  padding: 1em;
+  color: #004085;
+  background-color: #CCE5FF;
+  border: 1px solid #B8DAFF;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  max-width: 50%;
+}
+
 /* Login and Sign up */
 .auth-container {
   max-width: 450px;
@@ -86,6 +99,11 @@
 .form-control label {
   font-weight: bold;
   margin-bottom: 0.5em;
+}
+
+.form-control label::before {
+  content: "* ";
+  color: red;
 }
 
 .form-control input,
