@@ -5,7 +5,6 @@ const checkEmailExists = async (request, response, next) => {
   const { email } = request.body;
 
   const emailExists = await User.findOne({ where: { email }, raw: true });
-  console.log(emailExists);
   if (emailExists) {
     request.flash(
       "message",
