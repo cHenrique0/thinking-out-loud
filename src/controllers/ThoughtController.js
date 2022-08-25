@@ -20,9 +20,12 @@ class ThoughtController {
 
     const userThoughts = user.Thoughts.map((thoughts) => thoughts.dataValues);
 
+    const userNoThoughts = userThoughts.length === 0 ? true : false;
+    console.log(userNoThoughts);
+
     return response
       .status(StatusCodes.OK)
-      .render("thought/dashboard", { thoughts: userThoughts });
+      .render("thought/dashboard", { thoughts: userThoughts, userNoThoughts });
   }
 
   static createThoughtView(request, response) {
@@ -61,8 +64,9 @@ class ThoughtController {
 
   static async deleteThought(request, response) {
     const { uuid } = request.params;
+    const user = request.session.userid;
 
-    await Thought.destroy({ where: { uuid } });
+    await Thought.destroy({ where: { uuid, UserUuid: user } });
 
     request.flash("message", "You have deleted one of your thoughts.");
 
