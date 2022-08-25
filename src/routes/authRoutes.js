@@ -16,5 +16,6 @@ auhtRouter.post(
   [checkEmailExists, confirmPassword],
   AuthController.signup
 );
+auhtRouter.get("/logout", AuthController.logout);
 
 module.exports = auhtRouter;

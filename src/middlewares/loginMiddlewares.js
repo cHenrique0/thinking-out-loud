@@ -19,6 +19,8 @@ const checkEmailAndPassword = async (request, response, next) => {
     return response.status(StatusCodes.FORBIDDEN).render("auth/login");
   }
 
+  request.user = user.uuid;
+
   return next();
 };
 
