@@ -9,9 +9,7 @@
       <li>
         <span class="thought-title">{{this.title}}</span>
         <div class="thought-actions">
-          <form action="#" method="POST">
-            <button type="submit" class="btn">Edit</button>
-          </form>
+          <a href="/thoughts/edit/{{this.uuid}}" class="btn">Edit</a>
           <form action="/thoughts/delete/{{this.uuid}}" method="POST">
             <button type="submit" class="btn">Delete</button>
           </form>

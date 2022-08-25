@@ -16,6 +16,16 @@ thoughtRouter.post(
   checkUserLogged,
   ThoughtController.deleteThought
 );
+thoughtRouter.get(
+  "/edit/:uuid",
+  checkUserLogged,
+  ThoughtController.updateThoughtView
+);
+thoughtRouter.post(
+  "/edit/:uuid",
+  checkUserLogged,
+  ThoughtController.updateThought
+);
 thoughtRouter.get("/", checkUserLogged, ThoughtController.getAllThoughts);
 
 module.exports = thoughtRouter;

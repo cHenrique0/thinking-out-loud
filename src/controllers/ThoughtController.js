@@ -70,6 +70,31 @@ class ThoughtController {
       return response.status(StatusCodes.OK).redirect("/thoughts/dashboard");
     });
   }
+
+  static async updateThoughtView(request, response) {
+    const { uuid } = request.params;
+
+    const thought = await Thought.findByPk(uuid, { raw: true });
+
+    return response.status(StatusCodes.OK).render("thought/edit", { thought });
+  }
+
+  static async updateThought(request, response) {
+    const { uuid } = request.params;
+    const { title } = request.body;
+    const updatedThought = { title };
+
+    await Thought.update({ ...updatedThought }, { where: { uuid } });
+
+    request.flash(
+      "message",
+      "Sometimes our mind changes. Your thought has been updated."
+    );
+
+    request.session.save(() => {
+      return response.status(StatusCodes.OK).redirect("/thoughts/dashboard");
+    });
+  }
 }
 
 module.exports = ThoughtController;
