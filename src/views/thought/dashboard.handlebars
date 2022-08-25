@@ -1,0 +1,22 @@
+<div class="dashboard">
+  <div class="dashboard-title">
+    <h2>Dashboard</h2>
+    <a href="/thoughts/create" class="btn">Create Thoughts</a>
+  </div>
+  <h3>Your Thoughts</h3>
+  <ul>
+    {{#each thoughts}}
+      <li>
+        <span class="thought-title">{{this.title}}</span>
+        <div class="thought-actions">
+          <form action="#" method="POST">
+            <button type="submit" class="btn">Edit</button>
+          </form>
+          <form action="#" method="POST">
+            <button type="submit" class="btn">Delete</button>
+          </form>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
