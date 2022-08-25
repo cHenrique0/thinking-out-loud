@@ -10,6 +10,7 @@ thoughtRouter.get(
   checkUserLogged,
   ThoughtController.createThoughtView
 );
+thoughtRouter.post("/create", checkUserLogged, ThoughtController.createThought);
 thoughtRouter.get("/", checkUserLogged, ThoughtController.getAllThoughts);
 
 module.exports = thoughtRouter;
