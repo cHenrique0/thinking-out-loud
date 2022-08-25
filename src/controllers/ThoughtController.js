@@ -6,6 +6,10 @@ class ThoughtController {
     const thoughts = await Thought.findAll({ raw: true });
     return response.status(StatusCodes.OK).render("thought/home", { thoughts });
   }
+
+  static async dashboard(request, response) {
+    return response.status(StatusCodes.OK).render("thought/dashboard");
+  }
 }
 
 module.exports = ThoughtController;

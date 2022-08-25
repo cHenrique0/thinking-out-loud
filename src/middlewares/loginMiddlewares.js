@@ -24,4 +24,14 @@ const checkEmailAndPassword = async (request, response, next) => {
   return next();
 };
 
-module.exports = { checkEmailAndPassword };
+const checkUserLogged = async (request, response, next) => {
+  const user = request.session.userid;
+
+  if (!user) {
+    return response.status(StatusCodes.FORBIDDEN).redirect("/login");
+  }
+
+  return next();
+};
+
+module.exports = { checkEmailAndPassword, checkUserLogged };
