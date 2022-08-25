@@ -11,6 +11,11 @@ thoughtRouter.get(
   ThoughtController.createThoughtView
 );
 thoughtRouter.post("/create", checkUserLogged, ThoughtController.createThought);
+thoughtRouter.post(
+  "/delete/:uuid",
+  checkUserLogged,
+  ThoughtController.deleteThought
+);
 thoughtRouter.get("/", checkUserLogged, ThoughtController.getAllThoughts);
 
 module.exports = thoughtRouter;

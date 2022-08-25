@@ -11,7 +11,6 @@ class ThoughtController {
   static async dashboard(request, response) {
     const uuid = request.session.userid;
     const user = await User.findByPk(uuid, {
-      // raw: true,
       include: Thought,
     });
 
@@ -57,6 +56,18 @@ class ThoughtController {
       return response
         .status(StatusCodes.CREATED)
         .redirect("/thoughts/dashboard");
+    });
+  }
+
+  static async deleteThought(request, response) {
+    const { uuid } = request.params;
+
+    await Thought.destroy({ where: { uuid } });
+
+    request.flash("message", "You have deleted one of your thoughts.");
+
+    request.session.save(() => {
+      return response.status(StatusCodes.OK).redirect("/thoughts/dashboard");
     });
   }
 }
