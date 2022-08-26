@@ -1,1 +1,33 @@
-<h1>All Thoughts</h1>
+<div class="home-header">
+  <h1>All Thoughts</h1>
+  <form action="/" method="GET">
+    <input type="text" name="search" placeholder="Look for a thought" />
+    <button type="submit" class="btn">Search</button>
+  </form>
+  <div class="filters-container">
+    <span>Order by</span>
+    <form action="/" method="GET">
+      <input type="hidden" name="search" value="{{this.search}}" />
+      <input type="hidden" name="order" value="new" />
+      <button type="submit">
+        <i class="bi bi-arrow-up"></i>
+      </button>
+    </form>
+    <form action="/" method="GET">
+      <input type="hidden" name="search" value="{{this.search}}" />
+      <input type="hidden" name="order" value="old" />
+      <button type="submit">
+        <i class="bi bi-arrow-down"></i>
+      </button>
+    </form>
+    <a href="/">Clear filters</a>
+  </div>
+</div>
+<div class="thoughts-container">
+  {{#each thoughts}}
+    <figure>
+      <blockquote>"{{this.title}}"</blockquote>
+      <figcaption>by <span>{{this.User.name}}</span></figcaption>
+    </figure>
+  {{/each}}
+</div>

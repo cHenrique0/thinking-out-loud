@@ -4,7 +4,10 @@ const User = require("../models/User");
 
 class ThoughtController {
   static async getAllThoughts(request, response) {
-    const thoughts = await Thought.findAll({ raw: true });
+    const thoughtsData = await Thought.findAll({ include: User });
+    const thoughts = thoughtsData.map((element) =>
+      element.get({ plain: true })
+    );
     return response.status(StatusCodes.OK).render("thought/home", { thoughts });
   }
 
@@ -21,7 +24,6 @@ class ThoughtController {
     const userThoughts = user.Thoughts.map((thoughts) => thoughts.dataValues);
 
     const userNoThoughts = userThoughts.length === 0 ? true : false;
-    console.log(userNoThoughts);
 
     return response
       .status(StatusCodes.OK)
