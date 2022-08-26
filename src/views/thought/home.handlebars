@@ -27,7 +27,8 @@
   {{#each thoughts}}
     <figure>
       <blockquote>"{{this.title}}"</blockquote>
-      <figcaption>by <span>{{this.User.name}}</span></figcaption>
+      <figcaption>by
+        <a href="/user/{{this.User.uuid}}">{{this.User.name}}</a></figcaption>
     </figure>
   {{/each}}
 </div>

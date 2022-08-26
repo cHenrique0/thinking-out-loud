@@ -1,0 +1,13 @@
+<div class="dashboard">
+  <h1>{{username}} thoughts</h1>
+  <ul>
+    {{#each userThoughts}}
+      <li>
+        <span class="thought-title">{{this.title}}</span>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if userNoThoughts}}
+    <p>{{username}} hasn't thought much lately</p>
+  {{/if}}
+</div>

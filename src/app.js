@@ -6,8 +6,9 @@ const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const flash = require("express-flash");
 const thoughtRouter = require("./routes/thoughtRoutes");
-const ThoughtController = require("./controllers/ThoughtController");
 const auhtRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/userRoutes");
+const ThoughtController = require("./controllers/ThoughtController");
 
 dotenv.config();
 
@@ -56,6 +57,7 @@ app.use((request, response, next) => {
 
 app.use("/", auhtRouter);
 app.use("/thoughts", thoughtRouter);
+app.use("/", userRouter);
 app.use("/", ThoughtController.getAllThoughts);
 
 dbConnection
