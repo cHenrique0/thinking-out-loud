@@ -1,14 +1,26 @@
 const { StatusCodes } = require("http-status-codes");
+const { Op } = require("sequelize");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
 
 class ThoughtController {
   static async getAllThoughts(request, response) {
-    const thoughtsData = await Thought.findAll({ include: User });
+    const { search } = request.query;
+    const condition = search
+      ? { title: { [Op.iLike]: `%${search}%` } }
+      : undefined;
+    const thoughtsData = await Thought.findAll({
+      where: condition,
+      include: User,
+    });
     const thoughts = thoughtsData.map((element) =>
       element.get({ plain: true })
     );
-    return response.status(StatusCodes.OK).render("thought/home", { thoughts });
+    const noThoughts = thoughts.length === 0 ? true : false;
+
+    return response
+      .status(StatusCodes.OK)
+      .render("thought/home", { thoughts, noThoughts, search });
   }
 
   static async dashboard(request, response) {

@@ -1,5 +1,9 @@
 <div class="home-header">
-  <h1>All Thoughts</h1>
+  {{#if search}}
+    <h1>You are looking for: "<span>{{search}}</span>"</h1>
+  {{else}}
+    <h1>All Thoughts</h1>
+  {{/if}}
   <form action="/" method="GET">
     <input type="text" name="search" placeholder="Look for a thought" />
     <button type="submit" class="btn">Search</button>
@@ -31,4 +35,7 @@
         <a href="/user/{{this.User.uuid}}">{{this.User.name}}</a></figcaption>
     </figure>
   {{/each}}
+  {{#if noThoughts}}
+    <p>Nobody thought about it yet. You can be the first.</p>
+  {{/if}}
 </div>

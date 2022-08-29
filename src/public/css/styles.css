@@ -309,6 +309,11 @@
   color: #f6982d;
 }
 
+.thoughts-container p {
+  margin-top: 1.5em;
+  text-align: center;
+}
+
 /* Footer */
 footer {
   height: 55px;
