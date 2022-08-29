@@ -43,7 +43,7 @@
 }
 
 .logo-container #logo-img {
-  height: 70px;
+  height: 45px;
 }
 
 .logo-container #logo-title {
@@ -329,12 +329,36 @@ footer {
   height: 55px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   border-top: 1px solid #f6982d;
   background-color: #222;
 }
 
-footer span {
+.copy {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.copy span {
   font-weight: bold;
+  color: #f6982d;
+}
+
+.contact {
+  width: 50%;
+  display: flex;
+  gap: 10px;
+}
+
+.contact a {
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-left: 2em;
+}
+
+.contact a:hover {
   color: #f6982d;
 }

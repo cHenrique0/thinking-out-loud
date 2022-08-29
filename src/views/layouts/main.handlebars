@@ -21,18 +21,26 @@
       </div>
       <ul>
         <li>
-          <a href="/thoughts">Thoughts</a>
+          <a href="/thoughts" class="bi bi-house-fill">
+            Thoughts
+          </a>
         </li>
         {{#if session.userid}}
           <li>
-            <a href="/thoughts/dashboard">Dashboard</a>
+            <a href="/thoughts/dashboard" class="bi bi-layout-text-window">
+              Dashboard
+            </a>
           </li>
           <li>
-            <a href="/logout">Logout</a>
+            <a href="/logout" class="bi bi-box-arrow-in-left">
+              Logout
+            </a>
           </li>
         {{else}}
           <li>
-            <a href="/login">Login</a>
+            <a href="/login" class="bi bi-box-arrow-in-right">
+              Login
+            </a>
           </li>
           <li>
             <a href="/signup">Sign up</a>
@@ -52,8 +60,24 @@
     </div>
 
     <footer>
-      <h1>ADIDIONAR CONTATOS</h1>
-      <p><span>Thinking Out Loud</span> &nbsp; &copy; &nbsp; 2022</p>
+      <div class="copy">
+        <p><span>Thinking Out Loud</span> &nbsp; &copy; &nbsp; 2022</p>
+        <a href="">teste</a>
+      </div>
+      <div class="contact">
+        <a href="mailto:claudio.alexandre@discente.ufma.br">
+          <i class="bi bi-envelope-fill"></i>
+          claudio.alexandre@discente.ufma.br
+        </a>
+        <a href="http://github.com/cHenrique0" target="_blank">
+          <i class="bi bi-github"></i>
+          cHenrique0
+        </a>
+        <a href="http://linkedin.com/in/claudio-henrique-20" target="_blank">
+          <i class="bi bi-linkedin"></i>
+          Claudio Henrique
+        </a>
+      </div>
     </footer>
   </body>
 </html>
