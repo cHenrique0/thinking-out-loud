@@ -5,13 +5,18 @@ const User = require("../models/User");
 
 class ThoughtController {
   static async getAllThoughts(request, response) {
-    const { search } = request.query;
+    const { search, order } = request.query;
+
     const condition = search
       ? { title: { [Op.iLike]: `%${search}%` } }
       : undefined;
+
+    const orderBy = order === "old" ? "ASC" : "DESC";
+
     const thoughtsData = await Thought.findAll({
       where: condition,
       include: User,
+      order: [["createdAt", orderBy]],
     });
     const thoughts = thoughtsData.map((element) =>
       element.get({ plain: true })
