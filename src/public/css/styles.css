@@ -305,8 +305,18 @@
   margin-bottom: 0.4em;
 }
 
-.thoughts-container a {
+.thoughts-container figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.thoughts-container .author a {
   color: #f6982d;
+}
+
+.thoughts-container .date span {
+  color: #525050;
 }
 
 .thoughts-container p {

@@ -1,5 +1,6 @@
 const dotenv = require("dotenv");
 const express = require("express");
+const formatDate = require("handlebars-dateformat");
 const { engine } = require("express-handlebars");
 const dbConnection = require("./database/connection");
 const session = require("express-session");
@@ -15,7 +16,14 @@ dotenv.config();
 const app = express();
 const port = process.env.APP_PORT;
 
-app.engine("handlebars", engine());
+app.engine(
+  "handlebars",
+  engine({
+    helpers: { dateFormat: formatDate },
+    // defaultLayout: "main", // opitional
+    // extname: "hbs",  // define file extension
+  })
+);
 app.set("view engine", "handlebars");
 app.set("views", "./src/views");
 

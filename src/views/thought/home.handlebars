@@ -31,8 +31,15 @@
   {{#each thoughts}}
     <figure>
       <blockquote>"{{this.title}}"</blockquote>
-      <figcaption>by
-        <a href="/user/{{this.User.uuid}}">{{this.User.name}}</a></figcaption>
+      <figcaption>
+        <div class="author">
+          by
+          <a href="/user/{{this.User.uuid}}">{{this.User.name}}</a>
+        </div>
+        <div class="date">
+          <span>{{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}</span>
+        </div>
+      </figcaption>
     </figure>
   {{/each}}
   {{#if noThoughts}}
