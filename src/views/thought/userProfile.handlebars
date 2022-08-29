@@ -1,12 +1,15 @@
-<div class="dashboard">
+<div class="thoughts-container">
   <h1>{{username}} thoughts</h1>
-  <ul>
-    {{#each userThoughts}}
-      <li>
-        <span class="thought-title">{{this.title}}</span>
-      </li>
-    {{/each}}
-  </ul>
+  {{#each userThoughts}}
+    <figure>
+      <blockquote>"{{this.title}}"</blockquote>
+      <figcaption>
+        <div class="date">
+          <span>{{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}</span>
+        </div>
+      </figcaption>
+    </figure>
+  {{/each}}
   {{#if userNoThoughts}}
     <p>{{username}} hasn't thought much lately</p>
   {{/if}}
