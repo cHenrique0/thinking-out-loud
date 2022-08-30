@@ -14,7 +14,7 @@ class UserController {
 
     const userNoThoughts = userThoughts.length === 0 ? true : false;
 
-    return response.status(StatusCodes.OK).render("thought/userProfile", {
+    return response.status(StatusCodes.OK).render("user/profile", {
       username: user.name,
       userThoughts,
       userNoThoughts,
