@@ -25,14 +25,14 @@
   </head>
   <body>
 
-    <header class="text-bg-dark fixed-top py-2 mb-4">
-      <div class="container">
+    <header class="text-bg-dark fixed-top">
+      <div class="row container-fluid px-3 py-2">
         <nav
-          class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between"
+          class="d-flex flex-wrap align-items-center justify-content-md-around"
         >
           <a
             href="/"
-            class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-white text-decoration-none"
+            class="d-flex col-4 align-items-center mb-2 mb-md-0 text-white text-decoration-none"
           >
             <img
               class="bi me-2"
@@ -45,9 +45,7 @@
             <span class="fs-4">Thinking Out Loud</span>
           </a>
 
-          <ul
-            class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"
-          >
+          <ul class="nav col-4 col-md-auto mb-2 justify-content-center mb-md-0">
             <li>
               <a href="/thoughts" class="nav-link px-2 link-light">
                 {{! <i class="bi bi-house-fill"></i> }}
@@ -70,9 +68,9 @@
             </li>
           </ul>
 
-          <div class="text-end">
+          <div class="text-end col-4">
             {{#if session.userid}}
-              <div class="dropdown">
+              <div class="dropdown d-flex justify-content-end">
                 <a
                   href="#"
                   class="d-block link-light text-decoration-none dropdown-toggle"
@@ -123,15 +121,68 @@
                 </div>
               </div>
             {{else}}
-              <a href="/login" class="btn btn-outline-light me-2">
+              <button
+                type="button"
+                class="btn btn-outline-light me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#modalLogin"
+              >
                 Login
-              </a>
-              <a href="/signup" class="btn btn-warning">Sign-up</a>
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning"
+                data-bs-toggle="modal"
+                data-bs-target="#modalSignup"
+              >
+                Sign-up
+              </button>
             {{/if}}
           </div>
         </nav>
       </div>
     </header>
+
+    {{!-- Login Modal --}}
+    <div class="modal fade" id="modalLogin">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+
+          <div class="modal-header p-5 border-bottom-0">
+            <h2 class="fw-bold mb-0">Login</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            {{> login}}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- Sign-up Modal --}}
+    <div class="modal fade" id="modalSignup">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+
+          <div class="modal-header p-5 border-bottom-0">
+            <h2 class="fw-bold mb-0">Sign up</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            {{> signup}}
+          </div>
+        </div>
+      </div>
+    </div>
 
     <main class="container">
       <div class="bg-light p-4 mt-5 rounded">
@@ -145,7 +196,7 @@
       </div>
     </main>
 
-    <div class="container">
+    <div class="container-fluid">
       <footer
         class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
       >

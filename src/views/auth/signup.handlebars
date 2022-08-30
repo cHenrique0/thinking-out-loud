@@ -1,33 +1,4 @@
-<div class="auth-container">
-  <h2>Sign up</h2>
-  <form action="/signup" method="post">
-    <div class="form-control">
-      <label for="name">Name</label>
-      <input
-        autofocus
-        type="text"
-        name="name"
-        placeholder="Type your name"
-        required
-      />
-    </div>
-    <div class="form-control">
-      <label for="email">E-mail</label>
-      <input type="email" name="email" placeholder="Type your email" required />
-    </div>
-    <div class="form-control">
-      <label for="password">Password</label>
-      <input type="password" name="password" required />
-    </div>
-    <div class="form-control">
-      <label for="confirmPassword">Confirm password</label>
-      <input type="password" name="confirmPassword" required />
-    </div>
-    <div class="btn-options">
-      <button type="submit" class="btn">Sign up</button>
-      <div class="options">
-        <p>Already have an account? <a href="/login">Login</a></p>
-      </div>
-    </div>
-  </form>
+<div class="container d-flex flex-column align-items-center">
+  <h2 class="fw-bold mb-3">Sign up</h2>
+  {{> signup}}
 </div>
