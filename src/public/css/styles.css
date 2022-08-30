@@ -1,4 +1,41 @@
-* {
+body {
+  min-height: 30rem;
+  padding-top: 2rem;
+}
+
+/* Flash Messages */
+.message {
+  padding: 1em;
+  color: #004085;
+  background-color: #CCE5FF;
+  border: 1px solid #B8DAFF;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  max-width: 50%;
+}
+
+/* Dropdown menu */
+.text-small {
+  font-size: 85%;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+.dropdown-menu {
+  margin: 4rem auto;
+}
+
+.dropdown-item .active,
+.dropdown-item:active {
+  background-color: #ffc107;
+  color: black;
+}
+
+/* * {
   font-family: Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -7,10 +44,10 @@
   color: #fff;
   text-decoration: none;
   list-style: none;
-}
+} */
 
 /* Menu */
-.menu {
+/* .menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,29 +87,16 @@
   font-size: 2em;
   font-weight: bold;
   margin-left: 20px;
-}
+} */
 
 /* Main Container */
-.container {
+/* .container {
   min-height: 70vh;
   padding: 2em;
-}
-
-/* Messages */
-.message {
-  padding: 1em;
-  color: #004085;
-  background-color: #CCE5FF;
-  border: 1px solid #B8DAFF;
-  border-radius: 5px;
-  text-align: center;
-  margin: 0 auto;
-  margin-bottom: 1em;
-  max-width: 50%;
-}
+} */
 
 /* Login and Sign up */
-.auth-container {
+/* .auth-container {
   max-width: 450px;
   margin: 0 auto;
   display: flex;
@@ -86,7 +110,7 @@
   margin-bottom: 1em;
   color: #fff;
   padding: 0.3em;
-  /* border-left: 4px solid #f6982d; */
+  border-left: 4px solid #f6982d;
   text-align: center;
 }
 
@@ -119,7 +143,7 @@
   color: #f6982d;
   border: 2px solid #f6982d;
   padding: 0.5em 1.3em;
-  /* margin-bottom: 1em; */
+  margin-bottom: 1em;
   font-size: 1em;
   font-weight: bold;
   border-radius: 5px;
@@ -148,10 +172,10 @@
 .btn-options .options a {
   font-weight: bold;
   color: #f6982d;
-}
+} */
 
 /* Create and Edit Thoughts */
-.thought-form-container a {
+/* .thought-form-container a {
   color: #f6982d;
 }
 
@@ -162,7 +186,7 @@
 .thought-form-container h1 {
   margin: 1em 0;
   color: #fff;
-  /* border-left: 4px solid #f6982d; */
+  border-left: 4px solid #f6982d;
 }
 
 .thought-form-container .form-control label::before {
@@ -172,10 +196,10 @@
 .thought-form-container form {
   max-width: 30%;
   margin-top: 1.5em;
-}
+} */
 
 /* Dashboard */
-.dashboard {
+/* .dashboard {
   display: flex;
   flex-direction: column;
 }
@@ -215,10 +239,10 @@
   color: #fff;
   border-color: #fff;
   margin: 0 0.5em;
-}
+} */
 
 /* Home */
-.home-header {
+/* .home-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -322,10 +346,10 @@
 .thoughts-container p {
   margin-top: 1.5em;
   text-align: center;
-}
+} */
 
 /* Footer */
-footer {
+/* footer {
   height: 55px;
   display: flex;
   align-items: center;
@@ -361,4 +385,4 @@ footer {
 
 .contact a:hover {
   color: #f6982d;
-}
+} */
