@@ -10,6 +10,7 @@ const thoughtRouter = require("./routes/thoughtRoutes");
 const auhtRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
 const ThoughtController = require("./controllers/ThoughtController");
+const path = require("path");
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.engine(
     helpers: { dateFormat: formatDate },
     // defaultLayout: "main", // opitional
     // extname: "hbs",  // define file extension
+    partialsDir: path.join(__dirname, "views", "partials"),
   })
 );
 app.set("view engine", "handlebars");
