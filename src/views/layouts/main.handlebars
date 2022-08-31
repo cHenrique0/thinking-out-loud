@@ -153,8 +153,9 @@
               data-bs-dismiss="modal"
             ></button>
           </div>
-
-          <div class="modal-body p-5 pt-0">{{> login}}</div>
+          <div class="modal-body p-5 pt-0">
+            {{> login}}
+          </div>
         </div>
       </div>
     </div>
@@ -171,15 +172,15 @@
             ></button>
           </div>
 
-          <div class="modal-body p-5 pt-0">{{> signup}}</div>
+          <div class="modal-body p-5 pt-0">
+            {{> signup}}
+          </div>
         </div>
       </div>
     </div>
 
     <main class="container">
-      <div class="bg-light p-4 mt-5 rounded">
-        {{> alert}} 
-        
+      <div class="bg-light p-4 mt-5 rounded">        
         {{{body}}}
       </div>
     </main>
