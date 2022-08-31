@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-6">
     {{#if search}}
-      <h1>You are looking for: "<span>{{search}}</span>"</h1>
+      <h1>You are looking for: "<span
+          class="fst-italic text-muted"
+        >{{search}}</span>"</h1>
     {{else}}
       <h1>All Thoughts</h1>
     {{/if}}
@@ -13,7 +15,7 @@
       name="search"
       placeholder="Look for a thought"
     />
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-dark">
       <i class="bi bi-search"></i>
     </button>
   </form>
@@ -23,7 +25,7 @@
   <form class="m-0" action="/" method="GET">
     <input type="hidden" name="search" value="{{this.search}}" />
     <input type="hidden" name="order" value="new" />
-    <button type="submit" class="btn btn-outline-primary btn-sm" id="new">
+    <button type="submit" class="btn btn-outline-dark btn-sm" id="new">
       <i class="bi bi-arrow-up"></i>
       New
     </button>
@@ -31,7 +33,7 @@
   <form class="m-0" action="/" method="GET">
     <input type="hidden" name="search" value="{{this.search}}" />
     <input type="hidden" name="order" value="old" />
-    <button type="submit" class="btn btn-outline-primary btn-sm" id="old">
+    <button type="submit" class="btn btn-outline-dark btn-sm" id="old">
       <i class="bi bi-arrow-down"></i>
       Old
     </button>
