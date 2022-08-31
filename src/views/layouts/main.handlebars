@@ -188,24 +188,7 @@
 
     <main class="container">      
       <div class="bg-light p-4 mt-5 rounded">
-        {{#if messages.success}}
-          <div class="alert alert-success" role="alert">
-            <i class="bi bi-check-circle-fill"></i>
-            <strong>{{messages.success}}</strong>
-          </div>
-        {{/if}}
-        {{#if messages.danger}}
-          <div class="alert alert-danger" role="alert">
-            <i class="bi bi-x-circle-fill"></i>
-            <strong>{{messages.danger}}</strong>
-          </div>
-        {{/if}}
-        {{#if messages.warning}}
-          <div class="alert alert-warning" role="alert">
-            <i class="bi bi-exclamation-triangle-fill"></i>
-            <strong>{{messages.warning}}</strong>
-          </div>
-        {{/if}}
+        {{> alert}}
 
         {{{body}}}
       </div>

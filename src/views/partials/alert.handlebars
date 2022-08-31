@@ -1,0 +1,21 @@
+{{#if messages.success}}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle-fill"></i>
+    <strong>{{messages.success}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+{{/if}}
+{{#if messages.danger}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="bi bi-x-circle-fill"></i>
+    <strong>{{messages.danger}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+{{/if}}
+{{#if messages.warning}}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    <strong>{{messages.warning}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+{{/if}}
