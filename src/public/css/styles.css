@@ -1,5 +1,5 @@
 body {
-  min-height: 30rem;
+  min-height: 100vh;
   padding-top: 2rem;
 }
 
@@ -50,6 +50,8 @@ body {
   width: 500px;
   resize: none;
 }
+
+/* Footer */
 
 
 /* * {

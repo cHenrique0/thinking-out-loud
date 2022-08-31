@@ -25,8 +25,7 @@
     ></script>
     <script src="/js/scripts.js" defer></script>
   </head>
-  <body class="bg-light">
-
+  <body class="d-flex flex-column h-100 bg-light">
     <header class="text-bg-dark fixed-top">
       <div class="row container-fluid px-3 py-2">
         <nav
@@ -50,95 +49,92 @@
           <ul class="nav col-4 col-md-auto mb-2 justify-content-center mb-md-0">
             <li>
               <a href="/thoughts" class="nav-link px-2 link-light">
-                {{! <i class="bi bi-house-fill"></i> }}
-                Home
+                {{! <i class="bi bi-house-fill"></i> }} Home
               </a>
             </li>
             {{#if session.userid}}
-              <li>
-                <a href="/thoughts/dashboard" class="nav-link px-2 link-light">
-                  {{! <i class="bi bi-card-heading"></i> }}
-                  Dashboard
-                </a>
-              </li>
+            <li>
+              <a href="/thoughts/dashboard" class="nav-link px-2 link-light">
+                {{! <i class="bi bi-card-heading"></i> }} Dashboard
+              </a>
+            </li>
             {{/if}}
             <li>
               <a href="/about" class="nav-link px-2 link-light">
-                {{! <i class="bi bi-question-circle-fill"></i> }}
-                About
+                {{! <i class="bi bi-question-circle-fill"></i> }} About
               </a>
             </li>
           </ul>
 
           <div class="text-end col-4">
             {{#if session.userid}}
-              <div class="dropdown d-flex justify-content-end">
-                <a
-                  href="#"
-                  class="d-block link-light text-decoration-none dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+            <div class="dropdown d-flex justify-content-end">
+              <a
+                href="#"
+                class="d-block link-light text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://github.com/mdo.png"
+                  alt="mdo"
+                  width="40"
+                  height="40"
+                  class="rounded-circle border border-2"
+                />
+              </a>
+              <div class="d-flex gap-5 justify-content-center">
+                <ul
+                  class="dropdown-menu dropdown-menu-dark mx-0 border-0 shadow w-220px"
                 >
-                  <img
-                    src="https://github.com/mdo.png"
-                    alt="mdo"
-                    width="40"
-                    height="40"
-                    class="rounded-circle border border-2"
-                  />
-                </a>
-                <div class="d-flex gap-5 justify-content-center">
-                  <ul
-                    class="dropdown-menu dropdown-menu-dark mx-0 border-0 shadow w-220px"
-                  >
-                    <li>
-                      <a
-                        class="dropdown-item d-flex gap-2 align-items-center"
-                        href="/thoughts/create"
-                      >
-                        <i class="bi bi-plus-lg"></i>
-                        New Thoughts
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item d-flex gap-2 align-items-center"
-                        href="/user/profile"
-                      >
-                        <i class="bi bi-person-fill"></i>
-                        Profile
-                      </a>
-                    </li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                      <a
-                        class="dropdown-item d-flex gap-2 align-items-center"
-                        href="/logout"
-                      >
-                        <i class="bi bi-box-arrow-left"></i>
-                        Logout
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                  <li>
+                    <a
+                      class="dropdown-item d-flex gap-2 align-items-center"
+                      href="/thoughts/create"
+                    >
+                      <i class="bi bi-plus-lg"></i>
+                      New Thoughts
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item d-flex gap-2 align-items-center"
+                      href="/user/profile"
+                    >
+                      <i class="bi bi-person-fill"></i>
+                      Profile
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a
+                      class="dropdown-item d-flex gap-2 align-items-center"
+                      href="/logout"
+                    >
+                      <i class="bi bi-box-arrow-left"></i>
+                      Logout
+                    </a>
+                  </li>
+                </ul>
               </div>
+            </div>
             {{else}}
-              <button
-                type="button"
-                class="btn btn-outline-light me-2"
-                data-bs-toggle="modal"
-                data-bs-target="#modalLogin"
-              >
-                Login
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning"
-                data-bs-toggle="modal"
-                data-bs-target="#modalSignup"
-              >
-                Sign-up
-              </button>
+            <button
+              type="button"
+              class="btn btn-outline-light me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#modalLogin"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-warning"
+              data-bs-toggle="modal"
+              data-bs-target="#modalSignup"
+            >
+              Sign-up
+            </button>
             {{/if}}
           </div>
         </nav>
@@ -149,7 +145,6 @@
     <div class="modal fade" id="modalLogin">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4">
-
           <div class="modal-header p-5 border-bottom-0">
             <h2 class="fw-bold mb-0">Login</h2>
             <button
@@ -159,9 +154,7 @@
             ></button>
           </div>
 
-          <div class="modal-body p-5 pt-0">
-            {{> login}}
-          </div>
+          <div class="modal-body p-5 pt-0">{{> login}}</div>
         </div>
       </div>
     </div>
@@ -169,7 +162,6 @@
     <div class="modal fade" id="modalSignup">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4">
-
           <div class="modal-header p-5 border-bottom-0">
             <h2 class="fw-bold mb-0">Sign up</h2>
             <button
@@ -179,38 +171,35 @@
             ></button>
           </div>
 
-          <div class="modal-body p-5 pt-0">
-            {{> signup}}
-          </div>
+          <div class="modal-body p-5 pt-0">{{> signup}}</div>
         </div>
       </div>
     </div>
 
-    <main class="container">      
+    <main class="container">
       <div class="bg-light p-4 mt-5 rounded">
-        {{> alert}}
-
+        {{> alert}} 
+        
         {{{body}}}
       </div>
     </main>
 
-    <footer class="container-fluid footer bg-light mt-auto">
+    <footer class="footer bg-light mt-auto">
       <div
-        class="d-flex flex-wrap justify-content-between py-2 align-items-center border-top"
+        class="d-flex flex-wrap justify-content-md-around py-2 align-items-center border-top border-2"
       >
-        <div class="col-md-4 d-flex align-items-center">
+        <div class="">
           <a
             href="/"
             class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
           >
-            <span class="mb-3 mb-md-0 text-muted"><strong>Thinking Out Loud</strong> &copy;
-              2022</span>
+            <span class="mb-3 mb-md-0 text-muted"
+              ><strong>Thinking Out Loud</strong> &copy; 2022</span
+            >
           </a>
         </div>
 
-        <ul
-          class="nav col-md-4 justify-content-end list-unstyled d-flex flex-column"
-        >
+        <ul class="nav list-unstyled d-flex flex-column">
           <li class="ms-3">
             <a
               href="mailto:claudio.alexandre@discente.ufma.br"
