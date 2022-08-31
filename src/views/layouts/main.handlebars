@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,8 +23,9 @@
       crossorigin="anonymous"
       defer
     ></script>
+    <script src="/js/scripts.js" defer></script>
   </head>
-  <body>
+  <body class="bg-light">
 
     <header class="text-bg-dark fixed-top">
       <div class="row container-fluid px-3 py-2">
@@ -184,11 +186,24 @@
       </div>
     </div>
 
-    <main class="container">
+    <main class="container">      
       <div class="bg-light p-4 mt-5 rounded">
-        {{#if messages.message}}
-          <div class="message">
-            {{messages.message}}
+        {{#if messages.success}}
+          <div class="alert alert-success" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <strong>{{messages.success}}</strong>
+          </div>
+        {{/if}}
+        {{#if messages.danger}}
+          <div class="alert alert-danger" role="alert">
+            <i class="bi bi-x-circle-fill"></i>
+            <strong>{{messages.danger}}</strong>
+          </div>
+        {{/if}}
+        {{#if messages.warning}}
+          <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <strong>{{messages.warning}}</strong>
           </div>
         {{/if}}
 
@@ -196,17 +211,17 @@
       </div>
     </main>
 
-    <div class="container-fluid">
-      <footer
-        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+    <footer class="container-fluid footer bg-light mt-auto">
+      <div
+        class="d-flex flex-wrap justify-content-between py-2 align-items-center border-top"
       >
         <div class="col-md-4 d-flex align-items-center">
           <a
             href="/"
             class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
           >
-            <span class="mb-3 mb-md-0 text-muted"><strong>Thinking Out Loud</strong>&copy;
-              2022 Company, Inc</span>
+            <span class="mb-3 mb-md-0 text-muted"><strong>Thinking Out Loud</strong> &copy;
+              2022</span>
           </a>
         </div>
 
@@ -243,7 +258,7 @@
             </a>
           </li>
         </ul>
-      </footer>
-    </div>
+      </div>
+    </footer>
   </body>
 </html>

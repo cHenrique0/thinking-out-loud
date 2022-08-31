@@ -35,6 +35,16 @@ body {
   color: black;
 }
 
+/* Search bar and button */
+.search input {
+  border-radius: 10px 0 0 10px;
+}
+
+.search button {
+  border-radius: 0 10px 10px 0;
+}
+
+
 /* * {
   font-family: Helvetica, sans-serif;
   margin: 0;

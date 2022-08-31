@@ -7,7 +7,7 @@ const checkEmailExists = async (request, response, next) => {
   const emailExists = await User.findOne({ where: { email }, raw: true });
   if (emailExists) {
     request.flash(
-      "message",
+      "danger",
       "Email already registered. Please, choose another."
     );
     return response.status(StatusCodes.FORBIDDEN).render("auth/signup");
@@ -20,7 +20,7 @@ const confirmPassword = (request, response, next) => {
   const { password, confirmPassword } = request.body;
 
   if (password !== confirmPassword) {
-    request.flash("message", "Passwords don't match. Try again.");
+    request.flash("danger", "Passwords don't match. Try again.");
     return response.status(StatusCodes.FORBIDDEN).render("auth/signup");
   }
   return next();

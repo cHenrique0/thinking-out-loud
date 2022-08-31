@@ -38,7 +38,7 @@ class AuthController {
 
     await User.create({ ...newUser })
       .then((user) => {
-        request.flash("message", "Successfully registration!");
+        request.flash("success", "Successfully registration!");
       })
       .catch((error) => console.log(error));
 

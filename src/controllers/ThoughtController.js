@@ -62,7 +62,7 @@ class ThoughtController {
     }
 
     if (!title) {
-      request.flash("message", "Please, write what you are thinking.");
+      request.flash("warning", "Please, write what you are thinking.");
       return response.status(StatusCodes.BAD_REQUEST).render("thought/create");
     }
 
@@ -72,7 +72,7 @@ class ThoughtController {
       console.log(error)
     );
 
-    request.flash("message", "Your thought was shared.");
+    request.flash("success", "Your thought was shared.");
 
     request.session.save(() => {
       return response
@@ -87,7 +87,7 @@ class ThoughtController {
 
     await Thought.destroy({ where: { uuid, UserUuid: user } });
 
-    request.flash("message", "You have deleted one of your thoughts.");
+    request.flash("success", "You have deleted one of your thoughts.");
 
     request.session.save(() => {
       return response.status(StatusCodes.OK).redirect("/thoughts/dashboard");
@@ -110,7 +110,7 @@ class ThoughtController {
     await Thought.update({ ...updatedThought }, { where: { uuid } });
 
     request.flash(
-      "message",
+      "success",
       "Sometimes our mind changes. Your thought has been updated."
     );
 
