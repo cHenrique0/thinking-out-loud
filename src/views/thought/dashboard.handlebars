@@ -1,29 +1,52 @@
-<div class="dashboard">
-  <div class="dashboard-title">
-    <h2>Dashboard</h2>
-    <a href="/thoughts/create" class="btn bi bi-plus-lg">
-      Create Thoughts
-    </a>
+
+<div class="position-relative">
+  <div class="position-absolute mt-3 top-0 start-50 translate-middle">
+    {{> alert}}
   </div>
-  <h3>Your Thoughts</h3>
-  <ul>
-    {{#each thoughts}}
-      <li>
-        <span class="thought-title">{{this.title}}</span>
-        <div class="thought-actions">
-          <a
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="fw-bold">Dashboard</h1>
+  <a href="/thoughts/create" class="btn btn-dark">
+    <i class="bi bi-plus-lg"></i>
+    Create Thoughts
+  </a>
+</div>
+
+<h3 class="fst-italic mb-3">Your Thoughts</h3>
+<div class="list-group gap-3">
+  {{#each thoughts}}
+    <div class="list-group-item d-flex py-3 border border-2">
+      <div class="d-flex w-100 justify-content-between">
+        <figure class="mb-0">
+          <blockquote class="blockquote mb-1">
+            <h4 class="fst-italic">"{{this.title}}"</h4>
+          </blockquote>
+          <small class="opacity-50 text-nowrap m-1">
+            {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
+          </small>
+        </figure>
+        <div class="d-flex align-items-center gap-3">
+          <a 
             href="/thoughts/edit/{{this.uuid}}"
-            class="btn bi bi-pencil-square"
-          ></a>
+            class="btn btn-dark"
+          >
+           <i class="bi bi-pencil-square"></i>
+          </a>
           <form action="/thoughts/delete/{{this.uuid}}" method="POST">
-            <button type="submit" class="btn bi bi-trash-fill"></button>
+            <button type="submit" class="btn btn-danger">
+              <i class="bi bi-trash-fill"></i>
+            </button>
           </form>
         </div>
-      </li>
-    {{/each}}
-  </ul>
-  {{#if userNoThoughts}}
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#if userNoThoughts}}
+  <div class="d-flex flex-column mt-3 align-items-center">
     <p>You haven't been thinking a lot recently...</p>
     <p>Share what's on your mind.</p>
-  {{/if}}
-</div>
+  </div>
+{{/if}}
