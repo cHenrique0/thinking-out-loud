@@ -17,10 +17,11 @@ class UserController {
     const user = {
       uuid: userData.get("uuid"),
       name: userData.get("name"),
+      lastname: userData.get("lastname"),
       email: userData.get("email"),
-      // about: userData.get("about"),
-      // facebook: userData.get("facebook"),
-      // twitter: userData.get("twitter"),
+      about: userData.get("about"),
+      facebook: userData.get("facebook"),
+      twitter: userData.get("twitter"),
     };
 
     const userThoughts = userData.Thoughts.map(
@@ -48,10 +49,11 @@ class UserController {
     const user = {
       uuid: userData.get("uuid"),
       name: userData.get("name"),
+      lastname: userData.get("lastname"),
       email: userData.get("email"),
-      // about: userData.get("about"),
-      // facebook: userData.get("facebook"),
-      // twitter: userData.get("twitter"),
+      about: userData.get("about"),
+      facebook: userData.get("facebook"),
+      twitter: userData.get("twitter"),
     };
 
     const userThoughts = userData.Thoughts.map(
@@ -74,11 +76,12 @@ class UserController {
   }
 
   static async updateUser(request, response) {
-    const { uuid } = request.params;
+    /* const { uuid } = request.params;
     const { title } = request.body;
     const updatedThought = { title };
 
     await Thought.update({ ...updatedThought }, { where: { uuid } });
+    */
 
     request.flash("success", "Your profile has been updated.");
 

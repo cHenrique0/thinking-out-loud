@@ -15,7 +15,7 @@
           height="128"
           class="rounded-circle my-2"
         />
-        <h4>{{user.name}}</h4>
+        <h4>{{user.name}} {{user.lastname}}</h4>
       </div>
 
       <div class="p-2 bg-light">
@@ -62,7 +62,7 @@
                 class="text-decoration-none"
               >
                 <i class="bi bi-facebook"></i>
-                {{user.name}}
+                {{user.name}} {{user.lastname}}
               </a>
             </li>
           {{/if}}

@@ -26,13 +26,14 @@ class AuthController {
   }
 
   static async signup(request, response) {
-    const { name, email, password } = request.body;
+    const { name, lastname, email, password } = request.body;
 
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
     const newUser = {
       name,
+      lastname,
       email,
       password: hashedPassword,
     };
