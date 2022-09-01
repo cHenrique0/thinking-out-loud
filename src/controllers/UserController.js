@@ -76,12 +76,18 @@ class UserController {
   }
 
   static async updateUser(request, response) {
-    /* const { uuid } = request.params;
-    const { title } = request.body;
-    const updatedThought = { title };
+    const { uuid } = request.params;
+    const { name, lastname, email, facebook, twitter, about } = request.body;
+    const updatedUser = {
+      name,
+      lastname,
+      email,
+      facebook,
+      twitter,
+      about,
+    };
 
-    await Thought.update({ ...updatedThought }, { where: { uuid } });
-    */
+    await User.update({ ...updatedUser }, { where: { uuid } });
 
     request.flash("success", "Your profile has been updated.");
 
