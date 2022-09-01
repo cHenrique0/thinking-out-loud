@@ -1,23 +1,76 @@
-
 <div class="position-relative">
   <div class="position-absolute mt-3 top-0 start-50 translate-middle">
     {{> alert}}
   </div>
 </div>
 
-<div class="thoughts-container">
-  <h1>{{username}} thoughts</h1>
-  {{#each userThoughts}}
-    <figure>
-      <blockquote>"{{this.title}}"</blockquote>
-      <figcaption>
-        <div class="date">
-          <span>{{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}</span>
-        </div>
-      </figcaption>
-    </figure>
-  {{/each}}
-  {{#if userNoThoughts}}
-    <p>{{username}} hasn't thought much lately</p>
-  {{/if}}
+<div class="row g-5">
+  <div class="col-md-8 border rounded-3 pt-3 me-3">
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+      {{username}}'s thoughts
+    </h3>
+
+    {{#each userThoughts}}
+      <article class="mb-4">
+        <p class="fs-4 fst-italic mb-1">"{{this.title}}"</p>
+        <small class="opacity-50 text-nowrap">
+          {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
+        </small>
+      </article>
+      <hr class="my-4" />
+    {{/each}}
+  </div>
+
+  <div class="col-md-3 border rounded-3">
+    <div class="position-sticky" style="top: 2rem">
+      <div class="d-flex flex-column align-items-center p-2">
+        <img
+          src="/img/user-profile.png"
+          alt="{{username}}'s profile  photo"
+          width="128"
+          height="128"
+          class="rounded-circle my-2"
+        />
+        <h4>{{username}}</h4>
+      </div>
+
+      <div class="p-2 bg-light">
+        <p class="mx-auto text-wrap text-break fst-italic">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, in
+          autem, a soluta quidem qui, nesciunt at culpa placeat eveniet dolores
+          accusantium. Distinctio culpa temporibus doloribus iure dignissimos
+          laudantium pariatur!
+        </p>
+      </div>
+      <hr class="my-4" />
+      <div class="p-2">
+        <ul class="list-unstyled">
+          <li>
+            <a href="#">
+              <i class="bi bi-envelope-fill"></i>
+              Email
+              {{user.email}}
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-twitter"></i>
+              Twitter
+              {{user.twitter}}
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-facebook"></i>
+              Facebook
+              {{user.facebook}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+{{#if userNoThoughts}}
+  <p>{{username}} hasn't thought much lately</p>
+{{/if}}

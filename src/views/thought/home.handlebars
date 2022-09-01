@@ -1,7 +1,6 @@
-
 <div class="position-relative">
   <div class="position-absolute mt-3 top-0 start-50 translate-middle">
-    {{> alert}}
+    {{!-- {{> alert}} --}}
   </div>
 </div>
 
@@ -32,48 +31,54 @@
   <form class="m-0" action="/" method="GET">
     <input type="hidden" name="search" value="{{this.search}}" />
     <input type="hidden" name="order" value="new" />
-    <button type="submit" class="btn btn-outline-dark btn-sm" id="new">
+    <button
+      type="submit"
+      class="btn btn-outline-dark btn-sm rounded-pill"
+      id="new"
+    >
       <i class="bi bi-arrow-up"></i>
-      New
+      Newer
     </button>
   </form>
   <form class="m-0" action="/" method="GET">
     <input type="hidden" name="search" value="{{this.search}}" />
     <input type="hidden" name="order" value="old" />
-    <button type="submit" class="btn btn-outline-dark btn-sm" id="old">
+    <button
+      type="submit"
+      class="btn btn-outline-dark btn-sm rounded-pill"
+      id="old"
+    >
       <i class="bi bi-arrow-down"></i>
-      Old
+      Older
     </button>
   </form>
   <a href="/">Clear filters</a>
 </div>
 <hr class="my-4" />
-<div class="list-group w-auto mt-4 gap-3">
-  {{#each thoughts}}
-    <div class="list-group-item d-flex py-3 border border-2">
-      <div class="d-flex w-100 justify-content-between">
-        <figure class="mb-0">
-          <blockquote class="blockquote">
-            <h2 class="fst-italic">"{{this.title}}"</h2>
-          </blockquote>
-          <figcaption class="blockquote-footer mb-0">
-            <cite title="{{this.User.name}}">
-              <a
-                href="/user/{{this.User.uuid}}"
-                class="mb-0 opacity-75 link-primary text-decoration-none fw-bold"
-              >
-                {{this.User.name}}
-              </a>
-            </cite>
-          </figcaption>
-        </figure>
-        <small class="opacity-50 text-nowrap">
-          {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
-        </small>
-      </div>
-    </div>
-  {{/each}}
-  {{#if noThoughts}}
-    <p>Nobody thought about it yet. You can be the first.</p>
-  {{/if}}
-</div>
+{{#each thoughts}}
+  <article class="mb-4 d-flex justify-content-between">
+    <figure class="mb-0">
+      <blockquote class="blockquote">
+        <h2 class="fst-italic">"{{this.title}}"</h2>
+      </blockquote>
+      <figcaption class="blockquote-footer mb-0">
+        <cite title="{{this.User.name}}">
+          <a
+            href="/user/{{this.User.uuid}}"
+            class="mb-0 opacity-75 link-primary text-decoration-none fw-bold"
+          >
+            {{this.User.name}}
+          </a>
+        </cite>
+      </figcaption>
+    </figure>
+    <small class="opacity-50 text-nowrap">
+      {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
+    </small>
+  </article>
+  <hr class="my-4" />
+{{/each}}
+
+{{#if noThoughts}}
+  <p>Nobody thought about it yet. You can be the first.</p>
+{{/if}}
