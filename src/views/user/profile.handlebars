@@ -5,9 +5,63 @@
 </div>
 
 <div class="row g-5">
-  <div class="col-md-8 border rounded-3 pt-3 me-3">
+  <div class="col-md-3 border rounded-3 me-3">
+    <div class="position-sticky" style="top: 2rem">
+      <div class="d-flex flex-column align-items-center p-2">
+        <img
+          src="/img/user-profile.png"
+          alt="{{user.name}}'s profile  photo"
+          width="128"
+          height="128"
+          class="rounded-circle my-2"
+        />
+        <h4>{{user.name}}</h4>
+      </div>
+
+      <div class="p-2 bg-light">
+        <p class="mx-auto text-wrap text-break fst-italic">
+          {{user.about}}
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, in
+          autem, a soluta quidem qui, nesciunt at culpa placeat eveniet dolores
+          accusantium. Distinctio culpa temporibus doloribus iure dignissimos
+          laudantium pariatur!
+        </p>
+      </div>
+      <a
+        href="/user/edit/{{user.uuid}}"
+        class="btn btn-dark btn-sm rounded-pill w-100"
+      >
+        Edit profile
+      </a>
+      <hr class="my-4" />
+      <div class="p-2">
+        <ul class="list-unstyled">
+          <li>
+            <a href="mailto:{{user.email}}" class="text-decoration-none">
+              <i class="bi bi-envelope-fill"></i>
+              {{user.email}}
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/{{user.twitter}}" target="_blank" class="text-decoration-none">
+              <i class="bi bi-twitter"></i>
+              @{{user.twitter}}
+            </a>
+          </li>
+          <li>
+            <a href="{{user.facebook}}" target="_blank" class="text-decoration-none">
+              <i class="bi bi-facebook"></i>
+              {{user.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 border rounded-3 pt-3">
     <h3 class="pb-4 mb-4 fst-italic border-bottom">
-      {{username}}'s thoughts
+      {{user.name}}'s thoughts
     </h3>
 
     {{#each userThoughts}}
@@ -19,58 +73,9 @@
       </article>
       <hr class="my-4" />
     {{/each}}
-  </div>
 
-  <div class="col-md-3 border rounded-3">
-    <div class="position-sticky" style="top: 2rem">
-      <div class="d-flex flex-column align-items-center p-2">
-        <img
-          src="/img/user-profile.png"
-          alt="{{username}}'s profile  photo"
-          width="128"
-          height="128"
-          class="rounded-circle my-2"
-        />
-        <h4>{{username}}</h4>
-      </div>
-
-      <div class="p-2 bg-light">
-        <p class="mx-auto text-wrap text-break fst-italic">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, in
-          autem, a soluta quidem qui, nesciunt at culpa placeat eveniet dolores
-          accusantium. Distinctio culpa temporibus doloribus iure dignissimos
-          laudantium pariatur!
-        </p>
-      </div>
-      <hr class="my-4" />
-      <div class="p-2">
-        <ul class="list-unstyled">
-          <li>
-            <a href="#">
-              <i class="bi bi-envelope-fill"></i>
-              Email
-              {{user.email}}
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-twitter"></i>
-              Twitter
-              {{user.twitter}}
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-facebook"></i>
-              Facebook
-              {{user.facebook}}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    {{#if userNoThoughts}}
+      <p>{{user.name}} hasn't thought much lately</p>
+    {{/if}}
   </div>
 </div>
-{{#if userNoThoughts}}
-  <p>{{username}} hasn't thought much lately</p>
-{{/if}}
