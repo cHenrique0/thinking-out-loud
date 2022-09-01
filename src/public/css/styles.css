@@ -51,6 +51,12 @@ body {
   resize: none;
 }
 
+/* Edit user profile */
+#about {
+  height: 100px;
+  resize: none;
+}
+
 /* User profile */
 /* h1,
 h2,
