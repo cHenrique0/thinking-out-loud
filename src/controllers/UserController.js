@@ -77,14 +77,14 @@ class UserController {
 
   static async updateUser(request, response) {
     const { uuid } = request.params;
-    const { name, lastname, email, facebook, twitter, about } = request.body;
+    const { name, lastname, email, about, facebook, twitter } = request.body;
     const updatedUser = {
       name,
       lastname,
       email,
+      about,
       facebook,
       twitter,
-      about,
     };
 
     await User.update({ ...updatedUser }, { where: { uuid } });
