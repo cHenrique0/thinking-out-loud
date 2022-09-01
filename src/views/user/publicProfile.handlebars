@@ -27,12 +27,6 @@
           laudantium pariatur!
         </p>
       </div>
-      <a
-        href="/user/edit/{{user.uuid}}"
-        class="btn btn-dark btn-sm rounded-pill w-100"
-      >
-        Edit profile
-      </a>
       <hr class="my-4" />
       <div class="p-2">
         <ul class="list-unstyled">
@@ -73,7 +67,7 @@
 
   <div class="col-md-8 border rounded-3 pt-3">
     <h3 class="pb-4 mb-4 fst-italic border-bottom">
-      Your thoughts
+      {{user.name}}'s thoughts
     </h3>
 
     {{#each userThoughts}}
@@ -87,7 +81,7 @@
     {{/each}}
 
     {{#if userNoThoughts}}
-      <p>You haven't thought much lately</p>
+      <p>{{user.name}} hasn't thought much lately</p>
     {{/if}}
   </div>
 </div>

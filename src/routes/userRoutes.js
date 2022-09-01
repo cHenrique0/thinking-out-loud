@@ -10,6 +10,6 @@ userRouter.get("/edit/:uuid", checkUserLogged, UserController.updateUserView);
 
 userRouter.post("/edit/:uuid", checkUserLogged, UserController.updateUser);
 
-userRouter.get("/:uuid", checkUserLogged, UserController.findUserById);
+userRouter.get("/profile/:uuid", checkUserLogged, UserController.publicProfile);
 
 module.exports = userRouter;
