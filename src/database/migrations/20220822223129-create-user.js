@@ -22,6 +22,18 @@ module.exports = {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
       },
+      about: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: true,
+      },
+      facebook: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: true,
+      },
+      twitter: {
+        type: Sequelize.DataTypes.STRING,
+        allowNull: true,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,
