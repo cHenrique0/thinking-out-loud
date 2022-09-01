@@ -8,8 +8,9 @@ class AuthController {
   }
 
   static async login(request, response) {
-    const uuid = request.user;
+    const { uuid, name } = request.user;
     request.session.userid = uuid;
+    request.session.username = name;
     request.session.save(() => {
       return response.status(StatusCodes.OK).redirect("/thoughts/home");
     });
