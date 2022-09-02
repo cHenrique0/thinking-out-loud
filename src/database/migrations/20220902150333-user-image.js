@@ -15,8 +15,7 @@ module.exports = {
         allowNull: true,
       },
       name: {
-        type: Sequelize.DataTypes.DATE,
-        defaultValue: Sequelize.DataTypes.NOW,
+        type: Sequelize.DataTypes.STRING,
         allowNull: true,
       },
       ext: {

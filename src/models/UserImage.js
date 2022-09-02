@@ -18,8 +18,7 @@ UserImage.init(
       allowNull: true,
     },
     name: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     ext: {
