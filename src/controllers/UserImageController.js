@@ -7,7 +7,6 @@ class UserImageController {
     const userUUID = request.session.userid;
 
     const imageData = request.file;
-    console.log(imageData);
     if (!imageData) {
       request.flash("warning", "You must choose a profile image!");
 

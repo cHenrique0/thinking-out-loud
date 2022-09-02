@@ -74,6 +74,24 @@ body {
   height: 128px;
 }
 
+/* Upload Image Input */
+.custom-input-file::file-selector-button {
+  display: none;
+}
+
+label#border {
+  border-radius: 8px 0 0 8px;
+}
+
+input[type="file"]#profile-image {
+  border-radius: 0 8px 8px 0;
+}
+
+input[type="file"]#profile-image:hover {
+  background-color: #e9ecef;
+  border-color: #373b3e;
+}
+
 /* User profile */
 /* h1,
 h2,
