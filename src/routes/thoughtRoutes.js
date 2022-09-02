@@ -4,7 +4,6 @@ const { checkUserLogged } = require("../middlewares/loginMiddlewares");
 
 const thoughtRouter = Router();
 
-thoughtRouter.get("/dashboard", checkUserLogged, ThoughtController.dashboard);
 thoughtRouter.get(
   "/create",
   checkUserLogged,

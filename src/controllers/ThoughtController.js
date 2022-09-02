@@ -28,25 +28,6 @@ class ThoughtController {
       .render("thought/home", { thoughts, noThoughts, search });
   }
 
-  static async dashboard(request, response) {
-    const uuid = request.session.userid;
-    const user = await User.findByPk(uuid, {
-      include: Thought,
-    });
-
-    if (!user) {
-      return response.status(StatusCodes.UNAUTHORIZED).redirect("/login");
-    }
-
-    const userThoughts = user.Thoughts.map((thoughts) => thoughts.dataValues);
-
-    const userNoThoughts = userThoughts.length === 0 ? true : false;
-
-    return response
-      .status(StatusCodes.OK)
-      .render("thought/dashboard", { thoughts: userThoughts, userNoThoughts });
-  }
-
   static createThoughtView(request, response) {
     return response.status(StatusCodes.OK).render("thought/create");
   }
@@ -75,9 +56,7 @@ class ThoughtController {
     request.flash("success", "Your thought was shared.");
 
     request.session.save(() => {
-      return response
-        .status(StatusCodes.CREATED)
-        .redirect("/thoughts/dashboard");
+      return response.status(StatusCodes.CREATED).redirect("/user/profile");
     });
   }
 
@@ -90,7 +69,7 @@ class ThoughtController {
     request.flash("success", "You have deleted one of your thoughts.");
 
     request.session.save(() => {
-      return response.status(StatusCodes.OK).redirect("/thoughts/dashboard");
+      return response.status(StatusCodes.OK).redirect("/user/profile");
     });
   }
 
@@ -115,7 +94,7 @@ class ThoughtController {
     );
 
     request.session.save(() => {
-      return response.status(StatusCodes.OK).redirect("/thoughts/dashboard");
+      return response.status(StatusCodes.OK).redirect("/user/profile");
     });
   }
 }

@@ -49,19 +49,14 @@
           <ul class="nav col-4 col-md-auto mb-2 justify-content-center mb-md-0">
             <li>
               <a href="/thoughts" class="nav-link px-2 link-light">
-                {{! <i class="bi bi-house-fill"></i> }} Home
+                <i class="bi bi-house-fill"></i>
+                Home
               </a>
             </li>
-            {{#if session.userid}}
-            <li>
-              <a href="/thoughts/dashboard" class="nav-link px-2 link-light">
-                {{! <i class="bi bi-card-heading"></i> }} Dashboard
-              </a>
-            </li>
-            {{/if}}
             <li>
               <a href="/about" class="nav-link px-2 link-light">
-                {{! <i class="bi bi-question-circle-fill"></i> }} About
+                <i class="bi bi-question-circle-fill"></i>
+                About
               </a>
             </li>
           </ul>
@@ -75,9 +70,10 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
+                <span class="fs-6">{{session.username}}</span>
                 <img
-                  src="https://github.com/mdo.png"
-                  alt="mdo"
+                  src="/img/user-header.png"
+                  alt="user profile photo"
                   width="40"
                   height="40"
                   class="rounded-circle border border-2"
@@ -105,7 +101,7 @@
                       Profile
                     </a>
                   </li>
-                  <li><hr class="dropdown-divider" /></li>
+                  <li><hr class="dropdown-divider color-warning" /></li>
                   <li>
                     <a
                       class="dropdown-item d-flex gap-2 align-items-center"
