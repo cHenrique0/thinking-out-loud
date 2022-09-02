@@ -1,6 +1,6 @@
 <div class="position-relative">
   <div class="position-absolute mt-3 top-0 start-50 translate-middle">
-    {{!-- {{> alert}} --}}
+    {{> alert}}
   </div>
 </div>
 
@@ -106,8 +106,9 @@
     </div>
   </form>
   <form
-    action=""
+    action="/upload/image"
     method="post"
+    enctype="multipart/form-data"
     class="p-4 w-25 d-flex flex-column align-items-center border rounded gap-3"
   >
     <img

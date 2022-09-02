@@ -28,7 +28,9 @@ const checkEmailAndPassword = async (request, response, next) => {
 };
 
 const checkUserLogged = async (request, response, next) => {
-  const user = request.session.userid;
+  const uuid = request.session.userid;
+
+  const user = await User.findByPk(uuid, { raw: true });
 
   if (!user) {
     return response.status(StatusCodes.FORBIDDEN).redirect("/login");

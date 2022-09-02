@@ -11,6 +11,7 @@ const auhtRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
 const ThoughtController = require("./controllers/ThoughtController");
 const path = require("path");
+const uploadRouter = require("./routes/uploadRoutes");
 
 dotenv.config();
 
@@ -68,6 +69,7 @@ app.use((request, response, next) => {
 app.use("/", auhtRouter);
 app.use("/thoughts", thoughtRouter);
 app.use("/user", userRouter);
+app.use("/upload", uploadRouter);
 app.use("/", ThoughtController.getAllThoughts);
 
 dbConnection
