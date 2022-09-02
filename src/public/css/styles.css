@@ -57,6 +57,17 @@ body {
   resize: none;
 }
 
+/* Images */
+.user-photo {
+  width: 128px;
+  height: 128px;
+}
+
+#preview-image {
+  width: 128px;
+  height: 128px;
+}
+
 /* User profile */
 /* h1,
 h2,
