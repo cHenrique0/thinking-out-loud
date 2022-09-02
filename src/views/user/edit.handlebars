@@ -81,6 +81,25 @@
         <label for="twitter">Twitter username</label>
       </div>
     </div>
+
+    <button type="submit" class="btn btn-dark rounded-3 mt-3 justify-self-end">
+      <i class="bi bi-check-lg"></i>
+      Save
+    </button>
+  </div>
+  <div
+    class="p-4 w-25 d-flex flex-column align-items-center border rounded gap-3"
+  >
+    <img
+      src="/img/user-profile.png"
+      width="128"
+      height="128"
+      class="rounded-circle mb-2"
+    />
+    <div class="input-group mb-3">
+      <input type="file" class="form-control" id="inputGroupFile01" />
+    </div>
+
     <div class="form-floating">
       <textarea
         type="text"
@@ -91,16 +110,5 @@
       >{{user.about}}</textarea>
       <label for="about">Write about you...</label>
     </div>
-
-    <button type="submit" class="btn btn-dark rounded-3 mt-3 justify-self-end">
-      <i class="bi bi-check-lg"></i>
-      Save
-    </button>
-  </div>
-  <div
-    class="p-2 w-25 d-flex flex-column align-items-center border rounded gap-3"
-  >
-    <img src="/img/user-profile.png" />
-    <button type="submit" class="btn btn-dark rounded-pill">FOTO</button>
   </div>
 </form>
