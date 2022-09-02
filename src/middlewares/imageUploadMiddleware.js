@@ -13,12 +13,13 @@ const imageFilter = (request, file, callback) => {
 
 const storage = multer.diskStorage({
   destination: (request, file, callback) => {
-    file.path = path.resolve("src/public/img/users");
+    file.path = path.resolve("src/public/uploads/users/pictures");
     callback(null, file.path);
   },
   filename: (request, file, callback) => {
+    const userUUID = request.session.userid;
     const [, extension] = file.originalname.split(".");
-    file.filename = `${Date.now()}.${extension}`;
+    file.filename = `${userUUID}.${extension}`;
     callback(null, file.filename);
   },
 });

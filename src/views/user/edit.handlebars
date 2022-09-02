@@ -11,7 +11,12 @@
 
 <h1 class="fw-bold">Editing profile</h1>
 
-<form action="/user/edit/{{user.uuid}}" method="post" class="d-flex gap-3">
+<form
+  action="/user/edit/{{user.uuid}}"
+  enctype="multipart/form-data"
+  method="post"
+  class="d-flex gap-3"
+>
   <div class="p-4 w-50 border rounded">
     <div class="input-group mb-3">
       <span class="input-group-text fw-bold">Aa</span>
@@ -95,10 +100,10 @@
       class="mb-2 img-thumbnail rounded-circle"
       id="preview-image"
     />
-    <div class="input-group input-group-sm mb-3">
+    <div class="input-group input-group-sm mb-3 custom-input-file">
       <input
         type="file"
-        class="form-control"
+        class="form-control rounded-2"
         name="profileImage"
         id="profile-image"
       />
