@@ -11,12 +11,126 @@
 
 <h1 class="fw-bold">Editing profile</h1>
 
-<form
-  action="/user/edit/{{user.uuid}}"
-  enctype="multipart/form-data"
-  method="post"
-  class="d-flex gap-3"
->
+<div class="d-flex gap-3">
+  <form
+    action="/user/edit/{{user.uuid}}"
+    method="post"
+    class="p-4 w-50 border rounded"
+  >
+    <div class="input-group mb-3">
+      <span class="input-group-text fw-bold">Aa</span>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="Type your name"
+          required
+          value="{{user.name}}"
+        />
+        <label for="name">Name</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text fw-bold">Aa</span>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          placeholder="Type your name"
+          required
+          value="{{user.lastname}}"
+        />
+        <label for="lastname">Last name</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <i class="input-group-text bi bi-envelope-fill"></i>
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          placeholder="name@example.com"
+          required
+          value="{{user.email}}"
+        />
+        <label for="email">Email address</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <i class="input-group-text bi bi-facebook"></i>
+      <div class="form-floating">
+        <input
+          type="url"
+          class="form-control"
+          name="facebook"
+          placeholder="https://www.facebook.com/user-name"
+          value="{{user.facebook}}"
+        />
+        <label for="facebook">Facebook profile</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <i class="input-group-text bi bi-twitter"></i>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          name="twitter"
+          placeholder="@username"
+          value="{{user.twitter}}"
+        />
+        <label for="twitter">Twitter username</label>
+      </div>
+    </div>
+    <div class="d-flex gap-3 align-items-end justify-content-between">
+      <div class="form-floating">
+        <textarea
+          type="text"
+          class="form-control"
+          name="about"
+          id="about"
+          placeholder="Write about you"
+        >{{user.about}}</textarea>
+        <label for="about">Write about you...</label>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-dark rounded-3 mt-3 justify-self-end"
+      >
+        <i class="bi bi-check-lg"></i>
+        Save
+      </button>
+    </div>
+  </form>
+  <form
+    action=""
+    method="post"
+    class="p-4 w-25 d-flex flex-column align-items-center border rounded gap-3"
+  >
+    <img
+      src="/img/user-profile.png"
+      class="mb-2 img-thumbnail rounded-circle"
+      id="preview-image"
+    />
+    <div class="input-group input-group-sm mb-3 custom-input-file">
+      <input
+        type="file"
+        class="form-control rounded-2"
+        name="profileImage"
+        id="profile-image"
+      />
+    </div>
+    <button type="submit" class="btn btn-dark rounded-3">
+      <i class="bi bi-card-image"></i>
+      Save Image
+    </button>
+  </form>
+</div>
+
+{{!-- <form action="/user/edit/{{user.uuid}}" method="post" class="d-flex gap-3">
   <div class="p-4 w-50 border rounded">
     <div class="input-group mb-3">
       <span class="input-group-text fw-bold">Aa</span>
@@ -120,4 +234,4 @@
       <label for="about">Write about you...</label>
     </div>
   </div>
-</form>
+</form> --}}
