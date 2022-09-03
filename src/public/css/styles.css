@@ -35,6 +35,12 @@ body {
   color: black;
 }
 
+button[type="submit"].dropdown-item:hover {
+  background-color: #dc3545;
+  color: #FFF;
+
+}
+
 /* Search bar and button */
 .search input {
   border-radius: 10px 0 0 10px;

@@ -5,7 +5,7 @@
 </div>
 
 <div class="row g-5">
-  <div class="col-md-3 border rounded-3 me-3">
+  <div class="col-md-3 border rounded-3 me-3 bg-body shadow-sm">
     <div class="position-sticky" style="top: 2rem">
       <div class="d-flex flex-column align-items-center p-2">
         {{#if userImage}}
@@ -24,7 +24,7 @@
         <h4>{{user.name}} {{user.lastname}}</h4>
       </div>
 
-      <div class="p-2 bg-light">
+      <div class="p-2 bg-body">
         <p class="mx-auto text-wrap text-break fst-italic">
           {{user.about}}
         </p>
@@ -58,7 +58,8 @@
                 class="text-decoration-none"
               >
                 <i class="bi bi-facebook"></i>
-                {{user.name}} {{user.lastname}}
+                {{user.name}}
+                {{user.lastname}}
               </a>
             </li>
           {{/if}}
@@ -67,19 +68,18 @@
     </div>
   </div>
 
-  <div class="col-md-8 border rounded-3 pt-3">
+  <div class="col-md-8 border rounded-3 pt-3 bg-body shadow-sm">
     <h3 class="pb-4 mb-4 fst-italic border-bottom">
       {{user.name}}'s thoughts
     </h3>
 
     {{#each userThoughts}}
-      <article class="mb-4">
-        <p class="fs-4 fst-italic mb-1">"{{this.title}}"</p>
+      <article class="mb-4 p-3 border rounded-3">
+        <p class="fs-4 fst-italic mb-1 text-break">"{{this.title}}"</p>
         <small class="opacity-50 text-nowrap">
           {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
         </small>
       </article>
-      <hr class="my-4" />
     {{/each}}
 
     {{#if userNoThoughts}}
