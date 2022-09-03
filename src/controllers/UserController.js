@@ -1,6 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
+const UserImage = require("../models/UserImage");
 
 class UserController {
   static async publicProfile(request, response) {
@@ -11,7 +12,7 @@ class UserController {
     }
 
     const userData = await User.findByPk(userProfileUUID, {
-      include: Thought,
+      include: [Thought, UserImage],
     });
 
     const user = {
@@ -24,27 +25,38 @@ class UserController {
       twitter: userData.get("twitter"),
     };
 
+    const userImage = userData.UserImage
+      ? userData.UserImage.dataValues
+      : false;
+
     const userThoughts = userData.Thoughts.map(
       (thoughts) => thoughts.dataValues
     );
 
     const userNoThoughts = userThoughts.length === 0 ? true : false;
 
-    return response
-      .status(StatusCodes.OK)
-      .render("user/publicProfile", { user, userThoughts, userNoThoughts });
+    return response.status(StatusCodes.OK).render("user/publicProfile", {
+      user,
+      userThoughts,
+      userImage,
+      userNoThoughts,
+    });
   }
 
   static async profile(request, response) {
     const userSessionUUID = request.session.userid;
 
     const userData = await User.findByPk(userSessionUUID, {
-      include: Thought,
+      include: [Thought, UserImage],
     });
 
     if (!userData) {
       return response.status(StatusCodes.UNAUTHORIZED).redirect("/login");
     }
+
+    const userImage = userData.UserImage
+      ? userData.UserImage.dataValues
+      : false;
 
     const user = {
       uuid: userData.get("uuid"),
@@ -62,9 +74,12 @@ class UserController {
 
     const userNoThoughts = userThoughts.length === 0 ? true : false;
 
-    return response
-      .status(StatusCodes.OK)
-      .render("user/profile", { user, userThoughts, userNoThoughts });
+    return response.status(StatusCodes.OK).render("user/profile", {
+      user,
+      userThoughts,
+      userImage,
+      userNoThoughts,
+    });
   }
 
   static async updateUserView(request, response) {
@@ -90,6 +105,7 @@ class UserController {
     await User.update({ ...updatedUser }, { where: { uuid } });
 
     request.flash("success", "Your profile has been updated.");
+    request.session.username = name;
 
     request.session.save(() => {
       return response.status(StatusCodes.OK).redirect("/user/profile");
