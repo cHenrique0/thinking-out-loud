@@ -2,6 +2,8 @@ const { StatusCodes } = require("http-status-codes");
 const { Op } = require("sequelize");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
+const UserImage = require("../models/UserImage");
+const UserImageController = require("./UserImageController");
 
 class ThoughtController {
   static async getAllThoughts(request, response) {
@@ -22,6 +24,17 @@ class ThoughtController {
       element.get({ plain: true })
     );
     const noThoughts = thoughts.length === 0 ? true : false;
+
+    // let image = await UserImageController.getImagesByUserId(
+    //   thoughts[0].UserUuid
+    // );
+    // thoughts[0].UserImage = image[0].dataValues;
+    // if (!image[0]) {
+    //   return;
+    // }
+    // thought.UserImage = image[0].dataValues;
+
+    console.log(thoughts);
 
     return response
       .status(StatusCodes.OK)
@@ -85,6 +98,11 @@ class ThoughtController {
     const { uuid } = request.params;
     const { title } = request.body;
     const updatedThought = { title };
+
+    if (!title) {
+      request.flash("warning", "Please, write what you are thinking.");
+      return response.status(StatusCodes.BAD_REQUEST).render("thought/edit");
+    }
 
     await Thought.update({ ...updatedThought }, { where: { uuid } });
 
