@@ -31,6 +31,7 @@ class UserImageController {
       "success",
       "Your profile picture has been successfully updated."
     );
+    request.session.userImage = image.name;
 
     request.session.save(() => {
       return response

@@ -63,79 +63,87 @@
 
           <div class="text-end col-4">
             {{#if session.userid}}
-            <div class="dropdown d-flex justify-content-end">
-              <a
-                href="#"
-                class="d-block link-light text-decoration-none dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span class="fs-6">{{session.username}}</span>
-                <img
-                  src="/img/user-header.png"
-                  alt="user profile photo"
-                  class="rounded-circle border border-2 user-photo-min"
-                />
-              </a>
-              <div class="d-flex gap-5 justify-content-center">
-                <ul
-                  class="dropdown-menu dropdown-menu-dark mx-0 border-0 shadow w-220px"
+              <div class="dropdown d-flex justify-content-end">
+                <a
+                  href="#"
+                  class="d-block link-light text-decoration-none dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
-                  <li>
-                    <a
-                      class="dropdown-item d-flex gap-2 align-items-center"
-                      href="/thoughts/create"
-                    >
-                      <i class="bi bi-plus-lg"></i>
-                      New Thoughts
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item d-flex gap-2 align-items-center"
-                      href="/user/profile"
-                    >
-                      <i class="bi bi-person-fill"></i>
-                      Profile
-                    </a>
-                  </li>
-                  <li><hr class="dropdown-divider color-warning" /></li>
-                  <li>
-                    <a
-                      class="dropdown-item d-flex gap-2 align-items-center"
-                      href="/logout"
-                    >
-                      <i class="bi bi-box-arrow-left"></i>
-                      Logout
-                    </a>
-                  </li>
-                </ul>
+                  <span class="fs-6">{{session.username}}</span>
+                  {{#if session.userImage}}
+                    <img
+                      src="/uploads/users/pictures/{{session.userImage}}"
+                      alt="user profile photo"
+                      class="rounded-circle border border-2 user-photo-min"
+                    />
+                  {{else}}  
+                    <img
+                      src="/img/user-header.png"
+                      alt="user profile photo"
+                      class="rounded-circle border border-2 user-photo-min"
+                    />
+                  {{/if}}
+                </a>
+                <div class="d-flex gap-5 justify-content-center">
+                  <ul
+                    class="dropdown-menu dropdown-menu-dark mx-0 border-0 shadow w-220px"
+                  >
+                    <li>
+                      <a
+                        class="dropdown-item d-flex gap-2 align-items-center"
+                        href="/thoughts/create"
+                      >
+                        <i class="bi bi-plus-lg"></i>
+                        New Thoughts
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item d-flex gap-2 align-items-center"
+                        href="/user/profile"
+                      >
+                        <i class="bi bi-person-fill"></i>
+                        Profile
+                      </a>
+                    </li>
+                    <li><hr class="dropdown-divider color-warning" /></li>
+                    <li>
+                      <a
+                        class="dropdown-item d-flex gap-2 align-items-center"
+                        href="/logout"
+                      >
+                        <i class="bi bi-box-arrow-left"></i>
+                        Logout
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
             {{else}}
-            <button
-              type="button"
-              class="btn btn-outline-light me-2"
-              data-bs-toggle="modal"
-              data-bs-target="#modalLogin"
-            >
-              Login
-            </button>
-            <button
-              type="button"
-              class="btn btn-warning"
-              data-bs-toggle="modal"
-              data-bs-target="#modalSignup"
-            >
-              Sign-up
-            </button>
+              <button
+                type="button"
+                class="btn btn-outline-light me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#modalLogin"
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning"
+                data-bs-toggle="modal"
+                data-bs-target="#modalSignup"
+              >
+                Sign-up
+              </button>
             {{/if}}
           </div>
         </nav>
       </div>
     </header>
 
-    {{!-- Login Modal --}}
+    {{! Login Modal }}
     <div class="modal fade" id="modalLogin">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4">
@@ -153,7 +161,7 @@
         </div>
       </div>
     </div>
-    {{!-- Sign-up Modal --}}
+    {{! Sign-up Modal }}
     <div class="modal fade" id="modalSignup">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4">
@@ -174,7 +182,7 @@
     </div>
 
     <main class="container">
-      <div class="bg-light p-4 mt-5 rounded">        
+      <div class="bg-light p-4 mt-5 rounded">
         {{{body}}}
       </div>
     </main>
@@ -188,9 +196,8 @@
             href="/"
             class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
           >
-            <span class="mb-3 mb-md-0 text-muted"
-              ><strong>Thinking Out Loud</strong> &copy; 2022</span
-            >
+            <span class="mb-3 mb-md-0 text-muted"><strong>Thinking Out Loud</strong>
+              &copy; 2022</span>
           </a>
         </div>
 
