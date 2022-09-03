@@ -4,12 +4,16 @@
   </div>
 </div>
 
-<div class="row d-flex align-items-center justify-content-between">
+<div
+  class="row d-flex align-items-center justify-content-between p-3 text-white bg-dark rounded shadow-sm"
+>
   <div class="col-6">
     {{#if search}}
       <h1 class="fw-bold">You are looking for: "<span
-          class="fst-italic text-muted"
-        >{{search}}</span>"</h1>
+          class="fst-italic text-light"
+        >{{search}}
+        </span>"
+      </h1>
     {{else}}
       <h1 class="fw-bold">All Thoughts</h1>
     {{/if}}
@@ -18,11 +22,11 @@
     <form class="input-group mb-2 search" action="/" method="GET">
       <input
         type="search"
-        class="form-control text-bg-light"
+        class="form-control text-bg-dark border-light"
         name="search"
         placeholder="Look for a thought"
       />
-      <button type="submit" class="btn btn-dark">
+      <button type="submit" class="btn btn-light">
         <i class="bi bi-search"></i>
       </button>
     </form>
@@ -33,7 +37,7 @@
         <input type="hidden" name="order" value="new" />
         <button
           type="submit"
-          class="btn btn-outline-dark btn-sm rounded-pill"
+          class="btn btn-light btn-sm rounded-pill"
           id="new"
         >
           <i class="bi bi-arrow-up"></i>
@@ -45,42 +49,68 @@
         <input type="hidden" name="order" value="old" />
         <button
           type="submit"
-          class="btn btn-outline-dark btn-sm rounded-pill"
+          class="btn btn-light btn-sm rounded-pill"
           id="old"
         >
           <i class="bi bi-arrow-down"></i>
           Older
         </button>
       </form>
-      <a href="/">Clear filters</a>
+      <a href="/" class="text-light">Clear filters</a>
     </div>
   </div>
 </div>
+
 <hr class="my-4" />
-{{#each thoughts}}
-  <article class="mb-4 d-flex justify-content-between">
-    <figure class="mb-0">
-      <blockquote class="blockquote">
-        <h2 class="fst-italic">"{{this.title}}"</h2>
-      </blockquote>
-      <figcaption class="blockquote-footer mb-0">
-        <cite title="{{this.User.name}}">
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
+  {{#each thoughts}}
+    <div class="d-flex justify-content-between text-muted pt-3 border-bottom">
+      <div class="d-flex align-items-start">
+        {{#if userImage}}
           <a
             href="/user/profile/{{this.User.uuid}}"
-            class="mb-0 opacity-75 link-primary text-decoration-none fw-bold"
+            class="text-decoration-none"
           >
-            {{this.User.name}} {{this.User.lastname}}
+            <img
+              src="/uploads/users/pictures/{{userImage.name}}"
+              alt="user profile photo"
+              class="rounded-circle border border-2 user-photo-min me-2"
+            />
           </a>
-        </cite>
-      </figcaption>
-    </figure>
-    <small class="opacity-50 text-nowrap">
-      {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
-    </small>
-  </article>
-  <hr class="my-4" />
-{{/each}}
-
-{{#if noThoughts}}
-  <p>Nobody thought about it yet. You can be the first.</p>
-{{/if}}
+        {{else}}
+          <a
+            href="/user/profile/{{this.User.uuid}}"
+            class="text-decoration-none"
+          >
+            <img
+              src="/img/user-header.png"
+              alt="user profile photo"
+              class="rounded-circle border border-2 user-photo-min me-2"
+            />
+          </a>
+        {{/if}}
+        <div class="d-flex flex-column align-items-start pb-3 mb-3 lh-sm">
+          <a
+            href="/user/profile/{{this.User.uuid}}"
+            class="mb-1 opacity-75 link-primary text-decoration-none fw-bold"
+          >
+            {{this.User.name}}
+            {{this.User.lastname}}
+          </a>
+          <p class="mb-0">
+            {{this.title}}
+          </p>
+        </div>
+      </div>
+      <small class="opacity-50 text-nowrap">
+        {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
+      </small>
+    </div>
+  {{/each}}
+  {{#if noThoughts}}
+    <p class="mt-3 text-center">Nobody thought about it yet. You can be the
+      first.</p>
+  {{/if}}
+</div>
