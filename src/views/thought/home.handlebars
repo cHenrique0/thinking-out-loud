@@ -5,39 +5,37 @@
 </div>
 
 <div
-  class="row d-flex align-items-center justify-content-between p-3 text-white bg-dark rounded shadow-sm"
+  class="d-flex align-items-center justify-content-between p-4 bg-body border rounded-3 shadow-sm"
 >
-  <div class="col-6">
-    {{#if search}}
-      <h1 class="fw-bold">You are looking for: "<span
-          class="fst-italic text-light"
-        >{{search}}
-        </span>"
-      </h1>
-    {{else}}
-      <h1 class="fw-bold">All Thoughts</h1>
-    {{/if}}
-  </div>
-  <div class="col-4 align-self-start">
-    <form class="input-group mb-2 search" action="/" method="GET">
+  {{#if search}}
+    <h3 class="fw-bold">You are looking for: "<span
+        class="fst-italic text-muted"
+      >{{search}}
+      </span>"
+    </h3>
+  {{else}}
+    <h1 class="fw-bold">All Thoughts</h1>
+  {{/if}}
+  <div class="d-flex flex-column align-items-center gap-1">
+    <form class="input-group shadow-sm mb-2 search" action="/" method="GET">
       <input
         type="search"
-        class="form-control text-bg-dark border-light"
+        class="form-control border-secondary"
         name="search"
         placeholder="Look for a thought"
       />
-      <button type="submit" class="btn btn-light">
+      <button type="submit" class="btn btn-dark">
         <i class="bi bi-search"></i>
       </button>
     </form>
-    <div class="d-flex justify-content-end align-items-center gap-2">
+    <div class="d-flex align-items-center gap-2">
       <span>Order by:</span>
       <form class="m-0" action="/" method="GET">
         <input type="hidden" name="search" value="{{this.search}}" />
         <input type="hidden" name="order" value="new" />
         <button
           type="submit"
-          class="btn btn-light btn-sm rounded-pill"
+          class="btn btn-outline-dark btn-sm rounded-pill"
           id="new"
         >
           <i class="bi bi-arrow-up"></i>
@@ -49,21 +47,21 @@
         <input type="hidden" name="order" value="old" />
         <button
           type="submit"
-          class="btn btn-light btn-sm rounded-pill"
+          class="btn btn-outline-dark btn-sm rounded-pill"
           id="old"
         >
           <i class="bi bi-arrow-down"></i>
           Older
         </button>
       </form>
-      <a href="/" class="text-light">Clear filters</a>
+      <a href="/">Clear filters</a>
     </div>
   </div>
 </div>
 
 <hr class="my-4" />
 
-<div class="my-3 p-3 bg-body rounded shadow-sm">
+<div class="my-3 p-3 bg-body rounded-3 shadow-sm border">
   <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
   {{#each thoughts}}
     <div class="d-flex justify-content-between text-muted pt-3 border-bottom">
