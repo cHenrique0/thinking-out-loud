@@ -72,6 +72,8 @@ class UserController {
       (thoughts) => thoughts.dataValues
     );
 
+    userThoughts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
     const userNoThoughts = userThoughts.length === 0 ? true : false;
 
     return response.status(StatusCodes.OK).render("user/profile", {
