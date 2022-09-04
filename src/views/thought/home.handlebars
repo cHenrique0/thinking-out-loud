@@ -66,13 +66,13 @@
   {{#each thoughts}}
     <div class="d-flex justify-content-between text-muted pt-3 border-bottom">
       <div class="d-flex align-items-start">
-        {{#if userImage}}
+        {{#if UserImage}}
           <a
             href="/user/profile/{{this.User.uuid}}"
             class="text-decoration-none"
           >
             <img
-              src="/uploads/users/pictures/{{userImage.name}}"
+              src="/uploads/users/pictures/{{this.UserImage.name}}"
               alt="user profile photo"
               class="rounded-circle border border-2 user-photo-min me-2"
             />

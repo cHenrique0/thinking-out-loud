@@ -24,17 +24,18 @@ class ThoughtController {
       element.get({ plain: true })
     );
     const noThoughts = thoughts.length === 0 ? true : false;
+    const users = thoughts.map((thought) => thought.User.uuid);
+    const userUuids = [...new Set(users)];
+    const userImages = await UserImageController.getImagesByUserId(userUuids);
 
-    // let image = await UserImageController.getImagesByUserId(
-    //   thoughts[0].UserUuid
-    // );
-    // thoughts[0].UserImage = image[0].dataValues;
-    // if (!image[0]) {
-    //   return;
-    // }
-    // thought.UserImage = image[0].dataValues;
-
-    console.log(thoughts);
+    // Adding UserImage in the Thought List
+    thoughts.forEach((thought) => {
+      userImages.forEach((image) => {
+        if (thought.UserUuid === image.UserUuid) {
+          thought.UserImage = { ...image };
+        }
+      });
+    });
 
     return response
       .status(StatusCodes.OK)

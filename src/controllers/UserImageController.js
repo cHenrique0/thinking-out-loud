@@ -39,6 +39,14 @@ class UserImageController {
         .redirect(`/user/edit/${userUUID}`);
     });
   }
+
+  static async getImagesByUserId(uuid) {
+    const image = await UserImage.findAll({
+      where: { UserUuid: uuid },
+      raw: true,
+    });
+    return image;
+  }
 }
 
 module.exports = UserImageController;
