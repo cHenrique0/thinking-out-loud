@@ -1,10 +1,19 @@
 const { StatusCodes } = require("http-status-codes");
-const User = require("../models/User");
 const UserImage = require("../models/UserImage");
+const fs = require("fs");
+const path = require("path");
 
 class UserImageController {
   static async uploadImage(request, response) {
     const userUUID = request.session.userid;
+
+    const userImage = await UserImage.findOne({
+      where: { UserUuid: userUUID },
+    });
+
+    if (userImage) {
+      UserImageController.deleteImage(request, response);
+    }
 
     const imageData = request.file;
     if (!imageData) {
@@ -38,6 +47,46 @@ class UserImageController {
         .status(StatusCodes.CREATED)
         .redirect(`/user/edit/${userUUID}`);
     });
+  }
+
+  static async deleteImage(request, response, next) {
+    const uuid = request.session.userid; // user uuid
+    const image = await UserImage.findOne({ where: { UserUuid: uuid } });
+    if (image) {
+      const imagePath = path.join(image.path, image.name);
+      const existsImage = fs.existsSync(imagePath);
+
+      if (existsImage) {
+        // Reading the profile pictures directory
+        fs.readdir(image.path, (err, images) => {
+          if (err) {
+            console.log(err);
+          }
+          images.forEach((e) => {
+            // Checking if the user profile picture is in the directory
+            let imageMatch = e.includes(image.name);
+            if (imageMatch) {
+              // Deleting the user profile picture from directory
+              fs.rm(imagePath, (err) => {
+                if (err) {
+                  console.log(err);
+                }
+              });
+            }
+          });
+        });
+      }
+
+      // Deleting the user profile picture from database
+      await UserImage.destroy({ where: { uuid: image.uuid } });
+
+      request.flash("success", "Your profile picture has been deleted.");
+      request.session.userImage = null;
+
+      return request.session.save(() => {
+        // response.status(StatusCodes.OK).redirect(`/user/edit/${uuid}`);
+      });
+    }
   }
 
   static async getImagesByUserId(uuid) {

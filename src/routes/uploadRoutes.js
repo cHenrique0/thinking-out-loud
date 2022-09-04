@@ -6,9 +6,15 @@ const UserImageController = require("../controllers/UserImageController");
 const uploadRouter = Router();
 
 uploadRouter.post(
-  "/image",
+  "/upload",
   [checkUserLogged, imageUpload],
   UserImageController.uploadImage
+);
+
+uploadRouter.post(
+  "/delete/:uuid",
+  checkUserLogged,
+  UserImageController.deleteImage
 );
 
 module.exports = uploadRouter;
