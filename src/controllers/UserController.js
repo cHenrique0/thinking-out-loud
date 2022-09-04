@@ -87,7 +87,11 @@ class UserController {
   static async updateUserView(request, response) {
     const { uuid } = request.params;
 
-    const user = await User.findByPk(uuid, { raw: true });
+    const userData = await User.findAll({
+      where: { uuid },
+      include: UserImage,
+    });
+    const [user] = userData.map((data) => data.get({ plain: true }));
 
     return response.status(StatusCodes.OK).render("user/edit", { user });
   }
