@@ -17,7 +17,10 @@ class UserImageController {
 
     const imageData = request.file;
     if (!imageData) {
-      request.flash("warning", "You must choose a profile image!");
+      request.flash(
+        "warning",
+        "You must choose a profile image! Please upload only PNG, JPG or JPEG images."
+      );
 
       return request.session.save(() => {
         response

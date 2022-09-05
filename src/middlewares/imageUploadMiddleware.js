@@ -1,14 +1,18 @@
 const multer = require("multer");
+const mime = require("mime-types");
 const path = require("path");
 const util = require("util");
 
 const maxImageSize = 1024 * 1024 * 5;
 
 const imageFilter = (request, file, callback) => {
-  if (file.mimetype.startsWith("image")) {
-    return callback(null, true);
+  const type = mime.extension(file.mimetype);
+  const conditions = ["png", "jpg", "jpeg"];
+
+  if (conditions.includes(type)) {
+    callback(null, true);
   }
-  return callback("Please upload only images.", false);
+  callback(null, false);
 };
 
 const storage = multer.diskStorage({
