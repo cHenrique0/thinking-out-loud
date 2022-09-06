@@ -2,6 +2,7 @@ const multer = require("multer");
 const mime = require("mime-types");
 const path = require("path");
 const util = require("util");
+const fs = require("fs");
 
 const maxImageSize = 1024 * 1024 * 5;
 
@@ -17,13 +18,17 @@ const imageFilter = (request, file, callback) => {
 
 const storage = multer.diskStorage({
   destination: (request, file, callback) => {
-    file.path = path.resolve("src/public/uploads/users/pictures");
+    const picturePath = path.resolve("src/public/uploads/users/pictures");
+    const existsPath = fs.existsSync(picturePath);
+    if (!existsPath) {
+      fs.mkdirSync(picturePath, { recursive: true }, (err) => console.log(err));
+    }
+    file.path = picturePath;
     callback(null, file.path);
   },
   filename: (request, file, callback) => {
-    const userUUID = request.session.userid;
-    const [, extension] = file.originalname.split(".");
-    file.filename = `${userUUID}.${extension}`;
+    const filename = file.originalname.replaceAll(" ", "_");
+    file.filename = `${Date.now()}-${filename}`;
     callback(null, file.filename);
   },
 });
