@@ -17,8 +17,8 @@ class AuthController {
     request.session.username = name;
     request.session.userPicture = userPicture.name;
 
-    request.session.save(() => {
-      return response.status(StatusCodes.OK).redirect("/thoughts/home");
+    return request.session.save(() => {
+      response.status(StatusCodes.OK).redirect("/thoughts/home");
     });
   }
 

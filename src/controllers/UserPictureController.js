@@ -49,9 +49,7 @@ class UserPictureController {
       request.session.userPicture = newPicture.name;
 
       return request.session.save(() => {
-        response
-          .status(StatusCodes.CREATED)
-          .redirect(`/user/profile/${userUUID}`);
+        response.status(StatusCodes.CREATED).redirect("/user/profile");
       });
     }
 
@@ -66,47 +64,32 @@ class UserPictureController {
     request.session.userPicture = newPicture.name;
 
     return request.session.save(() => {
-      response.status(StatusCodes.CREATED).redirect(`/user/edit/${userUUID}`);
+      response.status(StatusCodes.CREATED).redirect("/user/profile");
     });
   }
 
   static async deletePicture(request, response) {
     const uuid = request.session.userid; // user uuid
     const picture = await UserPicture.findOne({ where: { UserUuid: uuid } });
+
     if (picture) {
-      // const picturePath = path.join(picture.path, picture.name);
-      // const existsPicture = fs.existsSync(picturePath);
-      // UserPictureController.deletePictureFromDirectory(picturePath);
-
-      /* if (existsPicture) {
-        // Reading the profile pictures directory
-        fs.readdir(picture.path, (err, pictures) => {
-          if (err) {
-            console.log(err);
-          }
-          pictures.forEach((e) => {
-            // Checking if the user profile picture is in the directory
-            let pictureMatch = e.includes(picture.name);
-            if (pictureMatch) {
-              // Deleting the user profile picture from directory
-              fs.rm(picturePath, (err) => {
-                if (err) {
-                  console.log(err);
-                }
-              });
-            }
-          });
-        });
-      } */
-
-      // Deleting the user profile picture from database
-      await UserPicture.destroy({ where: { uuid: picture.uuid } });
-
-      request.flash("success", "Your profile picture has been deleted.");
-      request.session.userPicture = null;
-
-      return request.session.save();
+      const picturePath = path.join(picture.path, picture.name);
+      const existsPicture = fs.existsSync(picturePath);
+      if (existsPicture) {
+        // Deleting the user profile picture from local directory
+        UserPictureController.deletePictureFromDirectory(picturePath);
+      }
     }
+
+    // Deleting the user profile picture from database
+    await UserPicture.destroy({ where: { uuid: picture.uuid } });
+
+    request.flash("success", "Your profile picture has been deleted.");
+    request.session.userPicture = null;
+
+    return request.session.save(() => {
+      response.status(StatusCodes.OK).redirect("/user/profile");
+    });
   }
 
   static async deletePictureFromDirectory(picturePath) {

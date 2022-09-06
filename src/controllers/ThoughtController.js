@@ -71,8 +71,8 @@ class ThoughtController {
 
     request.flash("success", "Your thought was shared.");
 
-    request.session.save(() => {
-      return response.status(StatusCodes.CREATED).redirect("/user/profile");
+    return request.session.save(() => {
+      response.status(StatusCodes.CREATED).redirect("/user/profile");
     });
   }
 
@@ -84,8 +84,8 @@ class ThoughtController {
 
     request.flash("success", "You have deleted one of your thoughts.");
 
-    request.session.save(() => {
-      return response.status(StatusCodes.OK).redirect("/user/profile");
+    return request.session.save(() => {
+      response.status(StatusCodes.OK).redirect("/user/profile");
     });
   }
 
@@ -114,8 +114,8 @@ class ThoughtController {
       "Sometimes our mind changes. Your thought has been updated."
     );
 
-    request.session.save(() => {
-      return response.status(StatusCodes.OK).redirect("/user/profile");
+    return request.session.save(() => {
+      response.status(StatusCodes.OK).redirect("/user/profile");
     });
   }
 }

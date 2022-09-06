@@ -113,8 +113,8 @@ class UserController {
     request.flash("success", "Your profile has been updated.");
     request.session.username = name;
 
-    request.session.save(() => {
-      return response.status(StatusCodes.OK).redirect("/user/profile");
+    return request.session.save(() => {
+      response.status(StatusCodes.OK).redirect("/user/profile");
     });
   }
 }
