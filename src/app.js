@@ -33,6 +33,7 @@ app.set("views", "./src/views");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public/uploads/users/pictures"));
 
 // Session middleware
 app.use(
@@ -43,7 +44,7 @@ app.use(
     saveUninitialized: false,
     store: new FileStore({
       logFn: function () {},
-      path: require("path").join(require("os").tmpdir(), "sessions"),
+      path: path.join(require("os").tmpdir(), "sessions"),
     }),
     cookie: {
       secure: false,
