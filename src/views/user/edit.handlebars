@@ -106,40 +106,40 @@
     </div>
   </form>
   <form
-    action="/image/upload"
+    action="/picture/upload"
     method="post"
     enctype="multipart/form-data"
     class="p-4 w-25 d-flex flex-column align-items-center border rounded bg-body shadow-sm gap-3"
   >
-    {{#if user.UserImage}}
+    {{#if user.UserPicture}}
       <img
-        src="/{{user.UserImage.name}}"
+        src="/{{user.UserPicture.name}}"
         class="mb-2 img-thumbnail rounded-circle"
-        id="preview-image"
+        id="preview-picture"
       />
     {{else}}
       <img
         src="/img/user-profile.png"
         class="mb-2 img-thumbnail rounded-circle"
-        id="preview-image"
+        id="preview-picture"
       />
     {{/if}}
     <div class="input-group input-group-sm mb-3">
       <label
-        for="profile-image"
+        for="userPicture"
         class="input-group-text btn btn-dark border border-dark"
         id="border"
       >Choose</label>
       <input
         type="file"
         class="form-control custom-input-file"
-        name="profileImage"
-        id="profile-image"
+        name="userPicture"
+        id="profile-picture"
       />
     </div>
     <button type="submit" class="btn btn-dark rounded-3">
       <i class="bi bi-card-image"></i>
-      Save Image
+      Save Picture
     </button>
   </form>
 </div>

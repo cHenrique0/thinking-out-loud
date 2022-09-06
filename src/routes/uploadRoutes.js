@@ -1,20 +1,20 @@
 const { Router } = require("express");
 const { checkUserLogged } = require("../middlewares/loginMiddlewares");
-const imageUpload = require("../middlewares/imageUploadMiddleware");
-const UserImageController = require("../controllers/UserImageController");
+const pictureUpload = require("../middlewares/pictureUploadMiddleware");
+const UserPictureController = require("../controllers/UserPictureController");
 
 const uploadRouter = Router();
 
 uploadRouter.post(
   "/upload",
-  [checkUserLogged, imageUpload],
-  UserImageController.uploadImage
+  [checkUserLogged, pictureUpload],
+  UserPictureController.uploadPicture
 );
 
 uploadRouter.post(
   "/delete/:uuid",
   checkUserLogged,
-  UserImageController.deleteImage
+  UserPictureController.deletePicture
 );
 
 module.exports = uploadRouter;

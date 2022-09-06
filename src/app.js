@@ -70,7 +70,7 @@ app.use((request, response, next) => {
 app.use("/", auhtRouter);
 app.use("/thoughts", thoughtRouter);
 app.use("/user", userRouter);
-app.use("/image", uploadRouter);
+app.use("/picture", uploadRouter);
 app.use("/", ThoughtController.getAllThoughts);
 
 dbConnection

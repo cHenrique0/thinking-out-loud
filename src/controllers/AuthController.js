@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
-const UserImage = require("../models/UserImage");
+const UserPicture = require("../models/UserPicture");
 
 class AuthController {
   static loginView(request, response) {
@@ -10,12 +10,12 @@ class AuthController {
 
   static async login(request, response) {
     const { uuid, name } = request.user;
-    const user = await User.findByPk(uuid, { include: UserImage });
-    const userImage = user.UserImage ? user.UserImage.dataValues : false;
+    const user = await User.findByPk(uuid, { include: UserPicture });
+    const userPicture = user.UserPicture ? user.UserPicture.dataValues : false;
 
     request.session.userid = uuid;
     request.session.username = name;
-    request.session.userImage = userImage.name;
+    request.session.userPicture = userPicture.name;
 
     request.session.save(() => {
       return response.status(StatusCodes.OK).redirect("/thoughts/home");

@@ -8,17 +8,17 @@
   <div class="col-md-3 border rounded-3 me-3 bg-body shadow-sm">
     <div class="position-sticky" style="top: 2rem">
       <div class="d-flex flex-column align-items-center p-2">
-        {{#if userImage}}
+        {{#if userPicture}}
           <img
-            src="/{{userImage.name}}"
-            alt="{{user.name}}'s profile  photo"
-            class="img-thumbnail rounded-circle my-2 user-photo"
+            src="/{{userPicture.name}}"
+            alt="{{user.name}}'s profile picture"
+            class="img-thumbnail rounded-circle my-2 user-picture"
           />
         {{else}}
           <img
             src="/img/user-profile.png"
-            alt="{{user.name}}'s profile  photo"
-            class="img-thumbnail rounded-circle my-2 user-photo"
+            alt="{{user.name}}'s profile  picture"
+            class="img-thumbnail rounded-circle my-2 user-picture"
           />
         {{/if}}
         <h4>{{user.name}} {{user.lastname}}</h4>

@@ -106,5 +106,5 @@ dist
 # VSCode settings
 .vscode
 
-# User Progile Images
+# User Profile Pictures
 src/public/uploads/users/pictures/

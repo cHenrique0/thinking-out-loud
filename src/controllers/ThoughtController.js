@@ -2,8 +2,8 @@ const { StatusCodes } = require("http-status-codes");
 const { Op } = require("sequelize");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
-const UserImage = require("../models/UserImage");
-const UserImageController = require("./UserImageController");
+const UserPicture = require("../models/UserPicture");
+const UserPictureController = require("./UserPictureController");
 
 class ThoughtController {
   static async getAllThoughts(request, response) {
@@ -26,13 +26,15 @@ class ThoughtController {
     const noThoughts = thoughts.length === 0 ? true : false;
     const users = thoughts.map((thought) => thought.User.uuid);
     const userUuids = [...new Set(users)];
-    const userImages = await UserImageController.getImagesByUserId(userUuids);
+    const userPictures = await UserPictureController.getPicturesByUserId(
+      userUuids
+    );
 
-    // Adding UserImage in the Thought List
+    // Adding UserPicture in the Thought List
     thoughts.forEach((thought) => {
-      userImages.forEach((image) => {
-        if (thought.UserUuid === image.UserUuid) {
-          thought.UserImage = { ...image };
+      userPictures.forEach((picture) => {
+        if (thought.UserUuid === picture.UserUuid) {
+          thought.UserPicture = { ...picture };
         }
       });
     });

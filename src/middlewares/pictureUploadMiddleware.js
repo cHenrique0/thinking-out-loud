@@ -4,9 +4,9 @@ const path = require("path");
 const util = require("util");
 const fs = require("fs");
 
-const maxImageSize = 1024 * 1024 * 5;
+const maxPictureSize = 1024 * 1024 * 5;
 
-const imageFilter = (request, file, callback) => {
+const pictureFilter = (request, file, callback) => {
   const type = mime.extension(file.mimetype);
   const conditions = ["png", "jpg", "jpeg"];
 
@@ -35,10 +35,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: maxImageSize },
-  fileFilter: imageFilter,
-}).single("profileImage");
+  limits: { fileSize: maxPictureSize },
+  fileFilter: pictureFilter,
+}).single("userPicture");
 
-const imageUpload = util.promisify(upload);
+const pictureUpload = util.promisify(upload);
 
-module.exports = imageUpload;
+module.exports = pictureUpload;

@@ -2,9 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 const connection = require("../database/connection");
 const User = require("./User");
 
-class UserImage extends Model {}
+class UserPicture extends Model {}
 
-UserImage.init(
+UserPicture.init(
   {
     uuid: {
       type: DataTypes.UUID,
@@ -28,11 +28,11 @@ UserImage.init(
   },
   {
     sequelize: connection,
-    tableName: "user_image",
+    tableName: "user_picture",
   }
 );
 
-UserImage.belongsTo(User);
-User.hasOne(UserImage);
+UserPicture.belongsTo(User);
+User.hasOne(UserPicture);
 
-module.exports = UserImage;
+module.exports = UserPicture;

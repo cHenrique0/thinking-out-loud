@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
-const UserImage = require("../models/UserImage");
+const UserPicture = require("../models/UserPicture");
 
 class UserController {
   static async publicProfile(request, response) {
@@ -12,7 +12,7 @@ class UserController {
     }
 
     const userData = await User.findByPk(userProfileUUID, {
-      include: [Thought, UserImage],
+      include: [Thought, UserPicture],
     });
 
     const user = {
@@ -25,8 +25,8 @@ class UserController {
       twitter: userData.get("twitter"),
     };
 
-    const userImage = userData.UserImage
-      ? userData.UserImage.dataValues
+    const userPicture = userData.UserPicture
+      ? userData.UserPicture.dataValues
       : false;
 
     const userThoughts = userData.Thoughts.map(
@@ -38,7 +38,7 @@ class UserController {
     return response.status(StatusCodes.OK).render("user/publicProfile", {
       user,
       userThoughts,
-      userImage,
+      userPicture,
       userNoThoughts,
     });
   }
@@ -47,15 +47,15 @@ class UserController {
     const userSessionUUID = request.session.userid;
 
     const userData = await User.findByPk(userSessionUUID, {
-      include: [Thought, UserImage],
+      include: [Thought, UserPicture],
     });
 
     if (!userData) {
       return response.status(StatusCodes.UNAUTHORIZED).redirect("/login");
     }
 
-    const userImage = userData.UserImage
-      ? userData.UserImage.dataValues
+    const userPicture = userData.UserPicture
+      ? userData.UserPicture.dataValues
       : false;
 
     const user = {
@@ -79,7 +79,7 @@ class UserController {
     return response.status(StatusCodes.OK).render("user/profile", {
       user,
       userThoughts,
-      userImage,
+      userPicture,
       userNoThoughts,
     });
   }
@@ -89,7 +89,7 @@ class UserController {
 
     const userData = await User.findAll({
       where: { uuid },
-      include: UserImage,
+      include: UserPicture,
     });
     const [user] = userData.map((data) => data.get({ plain: true }));
 

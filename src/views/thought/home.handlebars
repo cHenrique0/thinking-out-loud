@@ -66,15 +66,15 @@
   {{#each thoughts}}
     <div class="d-flex justify-content-between text-muted pt-3 border-bottom">
       <div class="d-flex align-items-start">
-        {{#if UserImage}}
+        {{#if UserPicture}}
           <a
             href="/user/profile/{{this.User.uuid}}"
             class="text-decoration-none"
           >
             <img
-              src="/{{this.UserImage.name}}"
-              alt="user profile photo"
-              class="rounded-circle border border-2 user-photo-min me-2"
+              src="/{{this.UserPicture.name}}"
+              alt="user profile picture"
+              class="rounded-circle border border-2 user-picture-min me-2"
             />
           </a>
         {{else}}
@@ -84,8 +84,8 @@
           >
             <img
               src="/img/user-header.png"
-              alt="user profile photo"
-              class="rounded-circle border border-2 user-photo-min me-2"
+              alt="user profile picture"
+              class="rounded-circle border border-2 user-picture-min me-2"
             />
           </a>
         {{/if}}

@@ -71,17 +71,17 @@
                   aria-expanded="false"
                 >
                   <span class="fs-6">{{session.username}}</span>
-                  {{#if session.userImage}}
+                  {{#if session.userPicture}}
                     <img
-                      src="/uploads/users/pictures/{{session.userImage}}"
-                      alt="user profile photo"
-                      class="rounded-circle border border-2 user-photo-min"
+                      src="/{{session.userPicture}}"
+                      alt="user profile picture"
+                      class="rounded-circle border border-2 user-picture-min"
                     />
                   {{else}}  
                     <img
                       src="/img/user-header.png"
-                      alt="user profile photo"
-                      class="rounded-circle border border-2 user-photo-min"
+                      alt="user profile picture"
+                      class="rounded-circle border border-2 user-picture-min"
                     />
                   {{/if}}
                 </a>

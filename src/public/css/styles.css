@@ -64,23 +64,23 @@ button[type="submit"].dropdown-item:hover {
   resize: none;
 }
 
-/* Images */
-.user-photo-min {
+/* Pictures */
+.user-picture-min {
   width: 40px;
   height: 40px;
 }
 
-.user-photo {
+.user-picture {
   width: 128px;
   height: 128px;
 }
 
-#preview-image {
+#preview-picture {
   width: 128px;
   height: 128px;
 }
 
-/* Upload Image Input */
+/* Upload Picture Input */
 .custom-input-file::file-selector-button {
   display: none;
 }
@@ -89,11 +89,11 @@ label#border {
   border-radius: 8px 0 0 8px;
 }
 
-input[type="file"]#profile-image {
+input[type="file"]#profile-picture {
   border-radius: 0 8px 8px 0;
 }
 
-input[type="file"]#profile-image:hover {
+input[type="file"]#profile-picture:hover {
   background-color: #e9ecef;
   border-color: #373b3e;
 }
