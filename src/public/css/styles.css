@@ -64,6 +64,15 @@ button[type="submit"].dropdown-item:hover {
   resize: none;
 }
 
+/* Delete user profile picture */
+.hidden {
+  display: none;
+}
+
+#div-user-picture:hover form.hidden {
+  display: block;
+}
+
 /* Pictures */
 .user-picture-min {
   width: 40px;
@@ -73,6 +82,7 @@ button[type="submit"].dropdown-item:hover {
 .user-picture {
   width: 128px;
   height: 128px;
+  cursor: pointer;
 }
 
 #preview-picture {

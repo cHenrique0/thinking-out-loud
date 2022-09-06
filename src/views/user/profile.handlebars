@@ -9,11 +9,25 @@
     <div class="position-sticky" style="top: 2rem">
       <div class="d-flex flex-column align-items-center p-2">
         {{#if userPicture}}
-          <img
-            src="/{{userPicture.name}}"
-            alt="{{user.name}}'s profile picture"
-            class="img-thumbnail rounded-circle my-2 user-picture"
-          />
+          <div class="position-relative" id="div-user-picture">
+            <img
+              src="/{{userPicture.name}}"
+              alt="{{user.name}}'s profile picture"
+              class="img-thumbnail rounded-circle my-2 user-picture"
+            />
+            <form
+              action="/picture/delete/{{userPicture.uuid}}"
+              method="post"
+              class="hidden mt-3 position-absolute top-0 end-0"
+            >
+              <button
+                type="submit"
+                class="btn btn-danger rounded-pill px-2 py-1"
+              >
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </form>
+          </div>
         {{else}}
           <img
             src="/img/user-profile.png"
