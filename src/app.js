@@ -6,12 +6,12 @@ const dbConnection = require("./database/connection");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const flash = require("express-flash");
+const path = require("path");
 const thoughtRouter = require("./routes/thoughtRoutes");
 const auhtRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
-const ThoughtController = require("./controllers/ThoughtController");
-const path = require("path");
 const uploadRouter = require("./routes/uploadRoutes");
+const indexRouter = require("./routes/indexRoutes");
 
 dotenv.config();
 
@@ -71,7 +71,7 @@ app.use("/", auhtRouter);
 app.use("/thoughts", thoughtRouter);
 app.use("/user", userRouter);
 app.use("/picture", uploadRouter);
-app.use("/", ThoughtController.getAllThoughts);
+app.use(indexRouter);
 
 dbConnection
   .sync()

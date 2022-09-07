@@ -40,7 +40,7 @@ class ThoughtController {
 
     return response
       .status(StatusCodes.OK)
-      .render("thought/home", { thoughts, noThoughts, search });
+      .render("home", { thoughts, noThoughts, search });
   }
 
   static createThoughtView(request, response) {

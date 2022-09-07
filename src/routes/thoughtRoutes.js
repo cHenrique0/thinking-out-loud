@@ -25,7 +25,5 @@ thoughtRouter.post(
   checkUserLogged,
   ThoughtController.updateThought
 );
-thoughtRouter.get("/home", ThoughtController.getAllThoughts);
-thoughtRouter.get("/", ThoughtController.getAllThoughts);
 
 module.exports = thoughtRouter;

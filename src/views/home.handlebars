@@ -17,7 +17,7 @@
     <h1 class="fw-bold">All Thoughts</h1>
   {{/if}}
   <div class="d-flex flex-column align-items-center gap-1">
-    <form class="input-group shadow-sm mb-2 search" action="/" method="GET">
+    <form class="input-group shadow-sm mb-2 search" action="/home" method="GET">
       <input
         type="search"
         class="form-control border-secondary"
@@ -30,7 +30,7 @@
     </form>
     <div class="d-flex align-items-center gap-2">
       <span>Order by:</span>
-      <form class="m-0" action="/" method="GET">
+      <form class="m-0" action="/home" method="GET">
         <input type="hidden" name="search" value="{{this.search}}" />
         <input type="hidden" name="order" value="new" />
         <button
@@ -42,7 +42,7 @@
           Newer
         </button>
       </form>
-      <form class="m-0" action="/" method="GET">
+      <form class="m-0" action="/home" method="GET">
         <input type="hidden" name="search" value="{{this.search}}" />
         <input type="hidden" name="order" value="old" />
         <button
@@ -54,7 +54,7 @@
           Older
         </button>
       </form>
-      <a href="/">Clear filters</a>
+      <a href="/home">Clear filters</a>
     </div>
   </div>
 </div>
