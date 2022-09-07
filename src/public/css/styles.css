@@ -22,11 +22,10 @@ body {
 
 .dropdown-item .active,
 .dropdown-item:active {
-  background-color: #ffc107;
-  color: black;
+  background-color: var(--bs-dropdown-link-hover-bg);
 }
 
-button[type="submit"].dropdown-item:hover {
+a.delete:hover {
   background-color: #dc3545;
   color: #FFF;
 
