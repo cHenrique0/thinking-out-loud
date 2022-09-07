@@ -61,3 +61,15 @@ if (textArea) {
     textArea.classList.remove("is-invalid");
   });
 }
+
+// Emojis
+/* const emojiButtons = document.querySelectorAll(".btn-emoji");
+
+emojiButtons.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    let emoji = btn.outerText;
+    // textArea.value += emoji;
+    textArea.value += emoji;
+    console.log(textArea);
+  });
+}); */

@@ -2,6 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const { Op } = require("sequelize");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
+const EmojiController = require("./EmojiController");
 const UserPictureController = require("./UserPictureController");
 
 class ThoughtController {
@@ -44,6 +45,7 @@ class ThoughtController {
   }
 
   static createThoughtView(request, response) {
+    // const emojis = EmojiController.getAllEmojis();
     return response.status(StatusCodes.OK).render("thought/create");
   }
 
