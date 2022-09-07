@@ -2,7 +2,6 @@ const { StatusCodes } = require("http-status-codes");
 const { Op } = require("sequelize");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
-const UserPicture = require("../models/UserPicture");
 const UserPictureController = require("./UserPictureController");
 
 class ThoughtController {
