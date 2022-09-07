@@ -10,11 +10,13 @@
       <div class="d-flex flex-column align-items-center p-2">
         {{#if userPicture}}
           <div class="position-relative" id="div-user-picture">
-            <img
-              src="/{{userPicture.name}}"
-              alt="{{user.name}}'s profile picture"
-              class="img-thumbnail rounded-circle my-2 user-picture"
-            />
+            <div class="img-thumbnail rounded-pill bg-body my-2">
+              <div
+                class="user-picture picture-128 rounded-pill"
+                style="background-image: url(/{{userPicture.name}})"
+              >
+              </div>
+            </div>
             <form
               action="/picture/delete/{{userPicture.uuid}}"
               method="post"
@@ -29,11 +31,13 @@
             </form>
           </div>
         {{else}}
-          <img
-            src="/img/user-profile.png"
-            alt="{{user.name}}'s profile picture"
-            class="img-thumbnail rounded-circle my-2 user-picture"
-          />
+          <div class="img-thumbnail rounded-pill bg-body my-2">
+            <div
+              class="user-picture picture-128 rounded-pill"
+              style="background-image: url(/img/user-profile.png)"
+            >
+            </div>
+          </div>
         {{/if}}
         <h4>{{user.name}} {{user.lastname}}</h4>
       </div>

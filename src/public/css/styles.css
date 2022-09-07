@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   min-height: 100vh;
   padding-top: 2rem;
@@ -74,15 +78,21 @@ button[type="submit"].dropdown-item:hover {
 }
 
 /* Pictures */
-.user-picture-min {
+.picture-40 {
   width: 40px;
   height: 40px;
 }
 
-.user-picture {
+.picture-128 {
   width: 128px;
   height: 128px;
+}
+
+.user-picture {
   cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #preview-picture {
@@ -95,17 +105,17 @@ button[type="submit"].dropdown-item:hover {
   display: none;
 }
 
+input[type="file"].custom-input-file:hover {
+  background-color: #e9ecef;
+  border-color: #373b3e;
+}
+
 label#border {
   border-radius: 8px 0 0 8px;
 }
 
-input[type="file"]#profile-picture {
+input[type="file"].custom-input-file {
   border-radius: 0 8px 8px 0;
-}
-
-input[type="file"]#profile-picture:hover {
-  background-color: #e9ecef;
-  border-color: #373b3e;
 }
 
 /* User profile */

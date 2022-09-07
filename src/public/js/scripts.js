@@ -26,7 +26,11 @@ if (inputImg) {
     const files = target.files;
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      document.querySelector("#preview-picture").src = fileReader.result;
+      // document.querySelector("#preview-picture").src = fileReader.result;
+      document.querySelector(
+        "#preview-picture"
+      ).style.backgroundImage = `url(${fileReader.result})`;
+      console.log(fileReader.result);
     };
     fileReader.readAsDataURL(files[0]);
   });

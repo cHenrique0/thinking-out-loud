@@ -65,28 +65,32 @@
   <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
   {{#each thoughts}}
     <div class="d-flex justify-content-between text-muted pt-3 border-bottom">
-      <div class="d-flex align-items-start">
+      <div class="d-flex align-items-start gap-3">
         {{#if UserPicture}}
           <a
             href="/user/profile/{{this.User.uuid}}"
             class="text-decoration-none"
           >
-            <img
-              src="/{{this.UserPicture.name}}"
-              alt="user profile picture"
-              class="rounded-circle border border-2 user-picture-min me-2"
-            />
+            <div class="img-thumbnail rounded-pill border border-2 bg-body p-0">
+              <div
+                class="user-picture picture-40 rounded-pill"
+                style="background-image: url(/{{this.UserPicture.name}})"
+              >
+              </div>
+            </div>
           </a>
         {{else}}
           <a
             href="/user/profile/{{this.User.uuid}}"
             class="text-decoration-none"
           >
-            <img
-              src="/img/user-header.png"
-              alt="user profile picture"
-              class="rounded-circle border border-2 user-picture-min me-2"
-            />
+            <div class="img-thumbnail rounded-pill border border-2 bg-body p-0">
+              <div
+                class="user-picture picture-40 rounded-pill"
+                style="background-image: url(/img/user-header.png)"
+              >
+              </div>
+            </div>
           </a>
         {{/if}}
         <div class="d-flex flex-column align-items-start pb-3 mb-3 lh-sm">

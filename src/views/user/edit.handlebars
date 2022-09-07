@@ -1,6 +1,6 @@
 <div class="position-relative">
   <div class="position-absolute mt-5 top-0 start-50 translate-middle">
-    {{> alert}}
+    {{!-- {{> alert}} --}}
   </div>
 </div>
 
@@ -112,24 +112,30 @@
     class="p-4 w-25 d-flex flex-column align-items-center border rounded bg-body shadow-sm gap-3"
   >
     {{#if user.UserPicture}}
-      <img
-        src="/{{user.UserPicture.name}}"
-        class="mb-2 img-thumbnail rounded-circle"
-        id="preview-picture"
-      />
+      <div class="img-thumbnail rounded-pill bg-body my-2 mb-2">
+        <div
+          class="user-picture picture-128 rounded-pill"
+          style="background-image: url(/{{user.UserPicture.name}})"
+          id="preview-picture"
+        >
+        </div>
+      </div>
     {{else}}
-      <img
-        src="/img/user-profile.png"
-        class="mb-2 img-thumbnail rounded-circle"
-        id="preview-picture"
-      />
+      <div class="img-thumbnail rounded-pill bg-body my-2 mb-2">
+        <div
+          class="user-picture picture-128 rounded-pill"
+          style="background-image: url(/img/user-profile.png)"
+          id="preview-picture"
+        >
+        </div>
+      </div>
     {{/if}}
     <div class="input-group input-group-sm mb-3">
       <label
-        for="userPicture"
+        for="profile-picture"
         class="input-group-text btn btn-dark border border-dark"
         id="border"
-      >Choose</label>
+      >Browse...</label>
       <input
         type="file"
         class="form-control custom-input-file"
