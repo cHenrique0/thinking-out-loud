@@ -1,6 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const UserPicture = require("../models/UserPicture");
 const fs = require("fs");
+const { constants } = require("fs");
 const path = require("path");
 
 class UserPictureController {
@@ -93,10 +94,16 @@ class UserPictureController {
   }
 
   static async deletePictureFromDirectory(picturePath) {
-    const existsPicture = fs.existsSync(picturePath);
-    if (existsPicture) {
-      fs.rmSync(picturePath);
-    }
+    fs.access(picturePath, constants.F_OK, (err) => {
+      fs.rm(picturePath, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+      if (err) {
+        console.log(err);
+      }
+    });
   }
 
   static async getPicturesByUserId(uuid) {

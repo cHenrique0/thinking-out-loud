@@ -97,7 +97,7 @@
       class="d-flex pb-4 mb-4 justify-content-between align-items-center border-bottom"
     >
       <h3 class="fst-italic">
-        Your thoughts
+        Your thoughts <span>({{userThoughts.length}})</span>
       </h3>
       <a href="/thoughts/create" class="btn btn-dark rounded-pill">
         <i class="bi bi-plus-lg"></i>
@@ -139,7 +139,7 @@
               </li>
               <li>
                 <a
-                  type="submit"
+                  type="button"
                   class="dropdown-item delete"
                   data-bs-toggle="modal"
                   data-bs-target="#deletionModal"

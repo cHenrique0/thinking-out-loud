@@ -2,6 +2,8 @@ const { StatusCodes } = require("http-status-codes");
 const Thought = require("../models/Thought");
 const User = require("../models/User");
 const UserPicture = require("../models/UserPicture");
+const UserPictureController = require("../controllers/UserPictureController");
+const path = require("path");
 
 class UserController {
   static async publicProfile(request, response) {
@@ -115,6 +117,46 @@ class UserController {
 
     return request.session.save(() => {
       response.status(StatusCodes.OK).redirect("/user/profile");
+    });
+  }
+
+  static async deleteUser(request, response) {
+    const { uuid } = request.params;
+    const { confirmEmail } = request.body;
+    const userSession = request.session.userid;
+    const user = await User.findByPk(uuid);
+
+    if (user.uuid !== userSession) {
+      return response
+        .status(StatusCodes.UNAUTHORIZED)
+        .redirect("/user/profile");
+    }
+
+    if (confirmEmail !== user.email) {
+      request.flash(
+        "danger",
+        "Invalid email! Please, check your email and try again."
+      );
+      return request.session.save(() => {
+        response.status(StatusCodes.OK).redirect("/user/profile");
+      });
+    }
+
+    const [userPicture] = await UserPictureController.getPicturesByUserId(uuid);
+    const userPicturePath = path.resolve(userPicture.path, userPicture.name);
+
+    await UserPicture.destroy({ where: { uuid: userPicture.uuid } })
+      .then(async (deletedPicture) => {
+        await UserPictureController.deletePictureFromDirectory(userPicturePath);
+        await User.destroy({ where: { uuid: user.uuid } }).catch((err) =>
+          console.log(err)
+        );
+      })
+      .catch((err) => console.log(err));
+
+    return request.session.save(() => {
+      request.session.destroy();
+      response.status(StatusCodes.OK).redirect("/login");
     });
   }
 }

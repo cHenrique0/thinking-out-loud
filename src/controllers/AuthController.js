@@ -5,7 +5,11 @@ const UserPicture = require("../models/UserPicture");
 
 class AuthController {
   static loginView(request, response) {
-    return response.status(StatusCodes.OK).render("auth/login");
+    const uuid = request.session.userid;
+    if (!uuid) {
+      return response.status(StatusCodes.UNAUTHORIZED).render("auth/login");
+    }
+    return response.status(StatusCodes.OK).redirect("/user/profile");
   }
 
   static async login(request, response) {
@@ -22,13 +26,17 @@ class AuthController {
     });
   }
 
-  static logout(request, respose) {
+  static logout(request, response) {
     request.session.destroy();
-    return respose.status(StatusCodes.OK).redirect("/login");
+    return response.status(StatusCodes.OK).redirect("/login");
   }
 
   static signupView(request, response) {
-    return response.status(StatusCodes.OK).render("auth/signup");
+    const uuid = request.session.userid;
+    if (!uuid) {
+      return response.status(StatusCodes.UNAUTHORIZED).render("auth/signup");
+    }
+    return response.status(StatusCodes.OK).redirect("/user/profile");
   }
 
   static async signup(request, response) {

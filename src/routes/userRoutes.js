@@ -12,4 +12,6 @@ userRouter.post("/edit/:uuid", checkUserLogged, UserController.updateUser);
 
 userRouter.get("/profile/:uuid", checkUserLogged, UserController.publicProfile);
 
+userRouter.post("/delete/:uuid", checkUserLogged, UserController.deleteUser);
+
 module.exports = userRouter;
