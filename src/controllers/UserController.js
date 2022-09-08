@@ -138,7 +138,7 @@ class UserController {
         "Invalid email! Please, check your email and try again."
       );
       return request.session.save(() => {
-        response.status(StatusCodes.OK).redirect("/user/profile");
+        response.status(StatusCodes.OK).redirect(`/user/edit/${user.uuid}`);
       });
     }
 
@@ -148,6 +148,7 @@ class UserController {
     await UserPicture.destroy({ where: { uuid: userPicture.uuid } })
       .then(async (deletedPicture) => {
         await UserPictureController.deletePictureFromDirectory(userPicturePath);
+        await Thought.destroy({ where: { UserUuid: user.uuid } });
         await User.destroy({ where: { uuid: user.uuid } }).catch((err) =>
           console.log(err)
         );
