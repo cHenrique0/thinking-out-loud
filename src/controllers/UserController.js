@@ -143,17 +143,26 @@ class UserController {
     }
 
     const [userPicture] = await UserPictureController.getPicturesByUserId(uuid);
-    const userPicturePath = path.resolve(userPicture.path, userPicture.name);
+    const userThoughts = await Thought.findAll({
+      where: { UserUuid: user.uuid },
+    });
+    if (userPicture) {
+      const userPicturePath = path.resolve(userPicture.path, userPicture.name);
+      await UserPictureController.deletePictureFromDirectory(userPicturePath);
+      await UserPicture.destroy({ where: { uuid: userPicture.uuid } }).catch(
+        (err) => console.log(err)
+      );
+    }
 
-    await UserPicture.destroy({ where: { uuid: userPicture.uuid } })
-      .then(async (deletedPicture) => {
-        await UserPictureController.deletePictureFromDirectory(userPicturePath);
-        await Thought.destroy({ where: { UserUuid: user.uuid } });
-        await User.destroy({ where: { uuid: user.uuid } }).catch((err) =>
-          console.log(err)
-        );
-      })
-      .catch((err) => console.log(err));
+    if (userThoughts) {
+      await Thought.destroy({ where: { UserUuid: user.uuid } }).catch((err) =>
+        console.log(err)
+      );
+    }
+
+    await User.destroy({ where: { uuid: user.uuid } }).catch((err) =>
+      console.log(err)
+    );
 
     return request.session.save(() => {
       request.session.destroy();
