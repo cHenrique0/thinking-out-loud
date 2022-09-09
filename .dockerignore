@@ -1,0 +1,14 @@
+# Files
+.git
+.gitignore
+.env.sample
+.sequelizerc
+Dockerfile
+docker-compose.yml
+
+# Folders
+node_modules/
+.vscode/
+.docker/
+src/database/migrations
+src/database/seeders

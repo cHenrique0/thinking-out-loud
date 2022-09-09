@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  database:
+    build: .docker/postgres
+    container_name: app-database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Claudio100%
+      POSTGRES_DB: thinking-out-loud
+    ports:
+      - "4321:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: app-server
+    volumes:
+      - app-data:/home/app/thinking-out-loud
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    environment:
+      NODE_ENV: production
+      DB_USERNAME: postgres
+      DB_PASSWORD: Claudio100%
+      DB_DATABASE: thinking-out-loud
+      DB_HOSTNAME: database
+
+volumes:
+  db-data:
+  app-data:
