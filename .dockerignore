@@ -3,6 +3,7 @@
 .gitignore
 .env.sample
 .sequelizerc
+README.md
 Dockerfile
 docker-compose.yml
 

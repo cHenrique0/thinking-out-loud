@@ -4,9 +4,9 @@ services:
     build: .docker/postgres
     container_name: app-database
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Claudio100%
-      POSTGRES_DB: thinking-out-loud
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
     ports:
       - "4321:5432"
     volumes:
@@ -23,9 +23,9 @@ services:
       - database
     environment:
       NODE_ENV: production
-      DB_USERNAME: postgres
-      DB_PASSWORD: Claudio100%
-      DB_DATABASE: thinking-out-loud
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
       DB_HOSTNAME: database
 
 volumes:
