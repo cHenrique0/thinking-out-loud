@@ -1,6 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-const connection = require("../database/connection");
-const User = require("./User");
 
 class UserPicture extends Model {
   static init(connection) {

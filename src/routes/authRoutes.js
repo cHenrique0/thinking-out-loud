@@ -9,13 +9,17 @@ const {
 const auhtRouter = Router();
 
 auhtRouter.get("/login", AuthController.loginView);
+
 auhtRouter.post("/login", checkEmailAndPassword, AuthController.login);
+
 auhtRouter.get("/signup", AuthController.signupView);
+
 auhtRouter.post(
   "/signup",
   [checkEmailExists, confirmPassword],
   AuthController.signup
 );
+
 auhtRouter.get("/logout", AuthController.logout);
 
 module.exports = auhtRouter;

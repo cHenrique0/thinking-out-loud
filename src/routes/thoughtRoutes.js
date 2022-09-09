@@ -9,17 +9,21 @@ thoughtRouter.get(
   checkUserLogged,
   ThoughtController.createThoughtView
 );
+
 thoughtRouter.post("/create", checkUserLogged, ThoughtController.createThought);
+
 thoughtRouter.post(
   "/delete/:uuid",
   checkUserLogged,
   ThoughtController.deleteThought
 );
+
 thoughtRouter.get(
   "/edit/:uuid",
   checkUserLogged,
   ThoughtController.updateThoughtView
 );
+
 thoughtRouter.post(
   "/edit/:uuid",
   checkUserLogged,
