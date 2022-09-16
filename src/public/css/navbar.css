@@ -122,41 +122,6 @@
   display: none;
 }
 
-/* Pictures */
-.user-box {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.user-picture-box {
-  background-color: #47475e;
-  border: 2px solid #47475e;
-  border-radius: 3rem;
-}
-
-.user-picture {
-  cursor: pointer;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.picture-48 {
-  width: 3rem;
-  height: 3rem;
-}
-
-.picture-128 {
-  width: 8rem;
-  height: 8rem;
-}
-
-#preview-picture {
-  width: 8rem;
-  height: 8rem;
-}
-
 .about-icon {
   cursor: pointer;
   background-image: url("../img/about.png");

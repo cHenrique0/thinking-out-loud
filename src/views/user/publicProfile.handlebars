@@ -1,35 +1,103 @@
 <div class="position-relative">
   <div class="position-absolute mt-5 top-0 start-50 translate-middle">
-    {{> alert}}
+    {{!-- {{> alert}} --}}
   </div>
 </div>
 
-<div class="row g-5">
-  <div class="col-md-3 border rounded-3 me-3 bg-body shadow-sm">
-    <div class="position-sticky" style="top: 2rem">
+<div class="profile-container-mobile">
+  <div class="d-flex flex-column gap-2 border rounded-3 mx-auto mb-3 px-4 bg-body shadow-sm">
+    <div class="d-flex flex-column align-items-center p-2">
+      {{#if userPicture}}
+      <div class="img-thumbnail rounded-pill bg-body my-2">
+        <div class="user-picture picture-128 rounded-pill" style="background-image: url(/{{userPicture.name}})">
+        </div>
+      </div>
+      {{else}}
+      <div class="img-thumbnail rounded-pill bg-body my-2">
+        <div class="user-picture picture-128 rounded-pill" style="background-image: url(/img/user-profile.png)">
+        </div>
+      </div>
+      {{/if}}
+      <h4>{{user.name}} {{user.lastname}}</h4>
+    </div>
+
+    <div class="p-2 bg-body">
+      <p class="mx-auto text-justify text-center text-wrap text-break fst-italic">
+        {{user.about}}
+      </p>
+    </div>
+    <hr class="my-4" />
+    <div>
+      <ul class="list-unstyled">
+        <li>
+          <a href="mailto:{{user.email}}" class="text-decoration-none">
+            <i class="bi bi-envelope-fill"></i>
+            {{user.email}}
+          </a>
+        </li>
+        {{#if user.twitter}}
+        <li>
+          <a href="https://twitter.com/{{user.twitter}}" target="_blank" class="text-decoration-none">
+            <i class="bi bi-twitter"></i>
+            @{{user.twitter}}
+          </a>
+        </li>
+        {{/if}}
+        {{#if user.facebook}}
+        <li>
+          <a href="{{user.facebook}}" target="_blank" class="text-decoration-none">
+            <i class="bi bi-facebook"></i>
+            {{user.name}}
+            {{user.lastname}}
+          </a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border rounded-3 mx-auto mb-3 p-2 bg-body shadow-sm">
+    <h3 class="fst-italic mb-4">
+      {{user.name}}'s thoughts
+    </h3>
+
+    {{#each userThoughts}}
+    <article class="mb-4 p-3 d-flex justify-content-between align-items-start border rounded-3 shadow-sm">
+      <div class="d-flex flex-column text-wrap me-3">
+        <p class="fs-4 fst-italic mb-1 text-break">"{{this.title}}"</p>
+        <small class="opacity-50 text-nowrap">
+          {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
+        </small>
+      </div>
+    </article>
+    {{/each}}
+
+    {{#if userNoThoughts}}
+    <p>{{user.name}} hasn't thought much lately</p>
+    {{/if}}
+  </div>
+</div>
+
+<div class="profile-container-desktop">
+  <div class="w-50 px-5 border rounded-3 bg-body shadow-sm">
+    <div class="position-sticky" style="top: 3rem">
       <div class="d-flex flex-column align-items-center p-2">
         {{#if userPicture}}
-          <div class="img-thumbnail rounded-pill bg-body my-2">
-            <div
-              class="user-picture picture-128 rounded-pill"
-              style="background-image: url(/{{userPicture.name}})"
-            >
-            </div>
+        <div class="img-thumbnail rounded-pill bg-body my-2">
+          <div class="user-picture picture-128 rounded-pill" style="background-image: url(/{{userPicture.name}})">
           </div>
+        </div>
         {{else}}
-          <div class="img-thumbnail rounded-pill bg-body my-2">
-            <div
-              class="user-picture picture-128 rounded-pill"
-              style="background-image: url(/img/user-profile.png)"
-            >
-            </div>
+        <div class="img-thumbnail rounded-pill bg-body my-2">
+          <div class="user-picture picture-128 rounded-pill" style="background-image: url(/img/user-profile.png)">
           </div>
+        </div>
         {{/if}}
         <h4>{{user.name}} {{user.lastname}}</h4>
       </div>
 
       <div class="p-2 bg-body">
-        <p class="mx-auto text-wrap text-break fst-italic">
+        <p class="mx-auto text-justify text-center text-wrap text-break fst-italic">
           {{user.about}}
         </p>
       </div>
@@ -43,51 +111,44 @@
             </a>
           </li>
           {{#if user.twitter}}
-            <li>
-              <a
-                href="https://twitter.com/{{user.twitter}}"
-                target="_blank"
-                class="text-decoration-none"
-              >
-                <i class="bi bi-twitter"></i>
-                @{{user.twitter}}
-              </a>
-            </li>
+          <li>
+            <a href="https://twitter.com/{{user.twitter}}" target="_blank" class="text-decoration-none">
+              <i class="bi bi-twitter"></i>
+              @{{user.twitter}}
+            </a>
+          </li>
           {{/if}}
           {{#if user.facebook}}
-            <li>
-              <a
-                href="{{user.facebook}}"
-                target="_blank"
-                class="text-decoration-none"
-              >
-                <i class="bi bi-facebook"></i>
-                {{user.name}}
-                {{user.lastname}}
-              </a>
-            </li>
+          <li>
+            <a href="{{user.facebook}}" target="_blank" class="text-decoration-none">
+              <i class="bi bi-facebook"></i>
+              {{user.name}}
+              {{user.lastname}}
+            </a>
+          </li>
           {{/if}}
         </ul>
       </div>
     </div>
   </div>
-
-  <div class="col-md-8 border rounded-3 pt-3 bg-body shadow-sm">
-    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+  <div class="p-4 border rounded-3 bg-body shadow-sm">
+    <h3 class="fst-italic">
       {{user.name}}'s thoughts
     </h3>
 
     {{#each userThoughts}}
-      <article class="mb-4 p-3 border rounded-3 shadow-sm">
+    <article class="mb-4 p-3 d-flex justify-content-between align-items-start border rounded-3 shadow-sm">
+      <div class="d-flex flex-column text-wrap me-3">
         <p class="fs-4 fst-italic mb-1 text-break">"{{this.title}}"</p>
         <small class="opacity-50 text-nowrap">
           {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
         </small>
-      </article>
+      </div>
+    </article>
     {{/each}}
 
     {{#if userNoThoughts}}
-      <p>{{user.name}} hasn't thought much lately</p>
+    <p>{{user.name}} hasn't thought much lately</p>
     {{/if}}
   </div>
 </div>

@@ -35,13 +35,13 @@
       <li class="nav-item">
         <a href="/user/profile" class="user-box">
           {{#if session.userPicture}}
-          <div class="user-picture-box">
-            <div class="user-picture picture-48" style="background-image: url(/{{session.userPicture}})">
+          <div class="user-picture-box rounded-pill">
+            <div class="user-picture picture-48 rounded-pill" style="background-image: url(/{{session.userPicture}})">
             </div>
           </div>
           {{else}}
-          <div class="user-picture-box">
-            <div class="user-picture picture-48" style="background-image: url(/img/user-profile.png)">
+          <div class="user-picture-box rounded-pill">
+            <div class="user-picture picture-48 rounded-pill" style="background-image: url(/img/user-profile.png)">
             </div>
           </div>
           {{/if}}
@@ -92,7 +92,7 @@
     {{{body}}}
   </main>
 
-  <footer>
+  {{!-- <footer>
     <nav id="nav-bar-bottom" class="nav-bottom">
       <ul class="nav-bottom-menu">
         <li class="nav-bottom-item">
@@ -109,7 +109,7 @@
         <p>Made by Claudio Henrique</p>
       </div>
     </nav>
-  </footer>
+  </footer> --}}
 </body>
 
 </html>

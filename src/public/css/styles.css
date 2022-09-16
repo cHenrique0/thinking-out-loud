@@ -1,6 +1,8 @@
 /* Import Styles */
 @import url(navbar.css);
 @import url(auth.css);
+@import url(profile.css);
+@import url(picture.css);
 @import url(footer.css);
 
 /* Basic Styles */
@@ -121,7 +123,8 @@ a.delete:hover {
   display: none;
 }
 
-#div-user-picture:hover form.hidden {
+#div-user-picture:hover form.hidden,
+#div-user-picture:active form.hidden {
   display: block;
 } */
 

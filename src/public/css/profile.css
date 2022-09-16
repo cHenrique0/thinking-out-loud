@@ -1,0 +1,41 @@
+/* Profile Styles */
+.profile-container-mobile {
+  width: 100%;
+  padding: 1rem;
+}
+
+.profile-container-desktop {
+  display: none;
+}
+
+/* Create Button Styles */
+.create-btn {
+  width: 3rem;
+  height: 3rem;
+  background-image: url("../img/create.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  text-decoration: none;
+}
+
+.create-btn:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 920px) {
+  .profile-container-mobile {
+    display: none;
+  }
+
+  .profile-container-desktop {
+    max-width: 1200px;
+    display: flex;
+    margin: 0 auto;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
