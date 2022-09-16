@@ -1,256 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thinking out loud</title>
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script src="/js/scripts.js" defer></script>
-  </head>
-  <body class="d-flex flex-column h-100 bg-light">
-    <header class="text-bg-dark fixed-top">
-      <div class="row container-fluid px-3 py-2">
-        <nav
-          class="d-flex flex-wrap align-items-center justify-content-md-around"
-        >
-          <a
-            href="/"
-            class="d-flex col-4 align-items-center mb-2 mb-md-0 text-white text-decoration-none"
-          >
-            <img
-              class="bi me-2"
-              src="/img/logo.png"
-              alt="Thinking Out Loud"
-              id="logo-img"
-              width="40"
-              height="40"
-            />
-            <span class="fs-4 fw-bold">Thinking Out Loud</span>
-          </a>
 
-          <ul class="nav col-4 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a href="/home" class="nav-link px-2 link-light">
-                <i class="bi bi-house-fill"></i>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="/about" class="nav-link px-2 link-light">
-                <i class="bi bi-question-circle-fill"></i>
-                About
-              </a>
-            </li>
-          </ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thinking out loud</title>
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"
+    defer></script>
+  <script src="/js/scripts.js" defer></script>
+</head>
 
-          <div class="text-end col-4">
-            {{#if session.userid}}
-              <div class="dropdown d-flex justify-content-end">
-                <a
-                  href="#"
-                  class="d-flex align-items-center link-light text-decoration-none dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span class="fs-6">{{session.username}}</span>
-                  {{#if session.userPicture}}
-                    <div
-                      class="img-thumbnail rounded-pill border border-2 border-light ms-2 p-0"
-                    >
-                      <div
-                        class="user-picture picture-40 rounded-pill"
-                        style="background-image: url(/{{session.userPicture}})"
-                      >
-                      </div>
-                    </div>
-                  {{else}}
-                    <div
-                      class="img-thumbnail rounded-pill border border-2 border-light ms-2 p-0"
-                    >
-                      <div
-                        class="user-picture picture-40 rounded-pill"
-                        style="background-image: url(/img/user-header.png)"
-                      >
-                      </div>
-                    </div>
-                  {{/if}}
-                </a>
-                <div class="d-flex gap-5 justify-content-center">
-                  <ul
-                    class="dropdown-menu dropdown-menu-dark mx-0 border-0 shadow w-220px"
-                  >
-                    <li>
-                      <a
-                        class="dropdown-item d-flex gap-2 align-items-center"
-                        href="/thoughts/create"
-                      >
-                        <i class="bi bi-plus-lg"></i>
-                        New Thoughts
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item d-flex gap-2 align-items-center"
-                        href="/user/profile"
-                      >
-                        <i class="bi bi-person-fill"></i>
-                        Profile
-                      </a>
-                    </li>
-                    <li><hr class="dropdown-divider color-warning" /></li>
-                    <li>
-                      <a
-                        class="dropdown-item d-flex gap-2 align-items-center"
-                        href="/logout"
-                      >
-                        <i class="bi bi-box-arrow-left"></i>
-                        Logout
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            {{else}}
-              <button
-                type="button"
-                class="btn btn-outline-light rounded-3 me-2"
-                data-bs-toggle="modal"
-                data-bs-target="#loginModal"
-              >
-                Login
-              </button>
-              <button
-                type="button"
-                class="btn btn-warning rounded-3"
-                data-bs-toggle="modal"
-                data-bs-target="#signupModal"
-              >
-                Sign-up
-              </button>
-            {{/if}}
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    {{! Login Modal }}
-    <div class="modal fade" id="loginModal">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4">
-          <div class="modal-header p-5 border-bottom-0">
-            <h1 class="fw-bold mb-0">Login</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body p-5 pt-0">
-            {{> login}}
-          </div>
-        </div>
-      </div>
+<body>
+  <nav id="nav-top" class="nav-bar nav-top">
+    <div class="logo">
+      <a href="/home">
+        <img src="/img/logo.png" alt="Thinking Out Loud Logo" />
+        <span>Thinking Out Loud</span>
+      </a>
     </div>
-    {{! Sign-up Modal }}
-    <div class="modal fade" id="signupModal">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4">
-          <div class="modal-header p-5 border-bottom-0">
-            <h1 class="fw-bold mb-0">Sign up</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-
-          <div class="modal-body p-5 pt-0">
-            {{> signup}}
-          </div>
-        </div>
-      </div>
+    {{#if session.userid}}
+    <div class="mobile-menu">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
     </div>
+    <ul id="nav-links" class="nav-mobile">
+      <li class="nav-item">
+        <a href="/user/profile" class="user-box">
+          {{#if session.userPicture}}
+          <div class="user-picture-box">
+            <div class="user-picture picture-48" style="background-image: url(/{{session.userPicture}})">
+            </div>
+          </div>
+          {{else}}
+          <div class="user-picture-box">
+            <div class="user-picture picture-48" style="background-image: url(/img/user-profile.png)">
+            </div>
+          </div>
+          {{/if}}
+          <span class="user-name">{{session.username}}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/thoughts/create">
+          <i class="bi bi-plus-lg"></i>
+          New Thought
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/logout">
+          <i class="bi bi-box-arrow-left"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+    {{else}}
+    <a href="/about">
+      <div class="about-icon picture-48"></div>
+    </a>
+    {{/if}}
+    <ul class="nav-desktop">
+      <li class="nav-item">
+        <a href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#about">About me</a>
+      </li>
+      <li class="nav-item">
+        <a href="#education">Education</a>
+      </li>
+      <li class="nav-item">
+        <a href="#skills">Skills</a>
+      </li>
+      <li class="nav-item">
+        <a href="#projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a href="#contacts">Contacts</a>
+      </li>
+    </ul>
+  </nav>
 
-    <main class="container p-4 mt-4">
-      {{{body}}}
-    </main>
+  <main>
+    {{{body}}}
+  </main>
 
-    <footer class="footer bg-light mt-auto">
-      <div
-        class="d-flex flex-wrap justify-content-md-around py-2 align-items-center border-top border-2"
-      >
-        <div class="">
-          <a
-            href="/"
-            class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-          >
-            <span class="mb-3 mb-md-0 text-muted"><strong>Thinking Out Loud</strong>
-              &copy; 2022</span>
+  <footer>
+    <nav id="nav-bar-bottom" class="nav-bottom">
+      <ul class="nav-bottom-menu">
+        <li class="nav-bottom-item">
+          <a href="/link">Menu item</a>
+        </li>
+      </ul>
+      <div class="nav-bottom-text">
+        <div class="logo">
+          <a href="#">
+            <p>Thinking Out Loud</p>
           </a>
         </div>
-
-        <ul class="nav list-unstyled d-flex flex-column">
-          <li class="ms-3">
-            <a
-              href="mailto:claudio.alexandre@discente.ufma.br"
-              class="text-muted text-decoration-none"
-            >
-              <i class="bi bi-envelope-fill"></i>
-              claudio.alexandre@discente.ufma.br
-            </a>
-          </li>
-          <li class="ms-3">
-            <a
-              href="http://github.com/cHenrique0"
-              target="_blank"
-              class="text-muted text-decoration-none"
-            >
-              <i class="bi bi-github"></i>
-              cHenrique0
-            </a>
-          </li>
-          <li class="ms-3">
-            <a
-              href="http://linkedin.com/in/claudio-henrique-20"
-              target="_blank"
-              class="text-muted text-decoration-none"
-            >
-              <i class="bi bi-linkedin"></i>
-              Claudio Henrique
-            </a>
-          </li>
-        </ul>
-
-        <div class="d-flex flex-column text-muted">
-          <p class="m-0">Icons:</p>
-          <a
-            href="https://www.flaticon.com/free-icons/discussion"
-            target="_blank"
-          >Logo created by Freepik - Flaticon</a>
-          <a
-            href="https://www.flaticon.com/free-icon/user_3177440"
-            target="_blank"
-          >User picture created by kmg design - Flaticon</a>
-        </div>
+        <p>&nbsp; &copy; &nbsp; 2022</p>
+        <p>Made by Claudio Henrique</p>
       </div>
-    </footer>
-  </body>
+    </nav>
+  </footer>
+</body>
+
 </html>

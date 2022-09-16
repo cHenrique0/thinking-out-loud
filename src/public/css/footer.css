@@ -1,0 +1,74 @@
+/* Footer Styles */
+.nav-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem;
+  background-color: #23232e;
+}
+
+.nav-bottom-menu {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+  list-style: none;
+}
+
+.nav-bottom-item a {
+  color: #FFF;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bottom-item a:hover {
+  color: #0b998f;
+}
+
+.nav-bottom-text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.nav-bottom-text p {
+  color: #FFF;
+}
+
+/* Media Queries for Large Screens */
+@media (min-width: 670px) {
+
+  .nav-bottom-menu {
+    align-items: center;
+  }
+}
+
+@media (min-width: 920px) {
+
+  .nav-bottom {
+    align-items: center;
+  }
+
+  .nav-bottom-menu {
+    height: 50px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-bottom-item a {
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-bottom-menu {
+    align-items: center;
+  }
+}

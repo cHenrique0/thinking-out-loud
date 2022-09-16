@@ -1,4 +1,82 @@
-<div class="container d-flex flex-column align-items-center">
+<div class="position-relative">
+  <div class="position-absolute mt-3 top-0 start-50 translate-middle">
+    {{> alert}}
+  </div>
+</div>
+
+<div class="signup-container">
   <h1 class="fw-bold mb-3">Sign up</h1>
-  {{> signup}}
+  <form action="/signup" method="post" class="needs-validation" novalidate>
+    <div class="input-group mb-3">
+      <span class="input-group-text fw-bold">Aa</span>
+      <div class="form-floating me-1">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="Type your name"
+          required
+        />
+        <label for="name">Name</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          placeholder="Type your last name"
+          required
+        />
+        <label for="lastname">Last name</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <i class="input-group-text bi bi-envelope-fill"></i>
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          placeholder="name@example.com"
+          required
+        />
+        <label for="email">Email address</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <i class="input-group-text bi bi-lock-fill"></i>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <i class="input-group-text bi bi-lock-fill"></i>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          name="confirmPassword"
+          placeholder="Password"
+          required
+        />
+        <label for="confirmPassword">Confirm password</label>
+      </div>
+    </div>
+    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-dark" type="submit">
+      Sign up
+    </button>
+    <hr class="my-4" />
+    <p>Already have an account?
+      <a href="/login">
+        Login
+      </a>
+    </p>
+  </form>
 </div>
