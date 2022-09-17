@@ -1,189 +1,150 @@
 <div class="position-relative">
   <div class="position-absolute mt-5 top-0 start-50 translate-middle">
-    {{> alert}}
+    {{!-- {{> alert}} --}}
   </div>
 </div>
 
-<a href="/user/profile" class="text-decoration-none mb-2">
-  <i class="bi bi-arrow-left"></i>
-  Back
-</a>
+<div class="edit-container">
+  <div class="text">
+    <a href="/user/profile" class="text-decoration-none">
+      <i class="bi bi-arrow-left"></i>
+      Back
+    </a>
 
-<h1 class="fw-bold">Editing profile</h1>
+    <h1 class="fw-bold mt-3">Editing profile</h1>
+  </div>
 
-<div class="d-flex gap-3">
-  <form
-    action="/user/edit/{{user.uuid}}"
-    method="post"
-    class="p-4 w-50 border rounded bg-body shadow-sm"
-  >
-    <div class="input-group mb-3 shadow-sm">
-      <span class="input-group-text fw-bold">Aa</span>
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          name="name"
-          placeholder="Type your name"
-          required
-          value="{{user.name}}"
-        />
-        <label for="name">Name</label>
+  <div class="edit-forms">
+    <form action="/user/edit/{{user.uuid}}" method="post" class="form-info p-3 border rounded bg-body shadow-sm">
+      <div class="input-group mb-3 shadow-sm">
+        <span class="input-group-text fw-bold">Aa</span>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="name" placeholder="Type your name" required
+            value="{{user.name}}" />
+          <label for="name">Name</label>
+        </div>
       </div>
-    </div>
-    <div class="input-group mb-3 shadow-sm">
-      <span class="input-group-text fw-bold">Aa</span>
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          name="lastname"
-          placeholder="Type your name"
-          required
-          value="{{user.lastname}}"
-        />
-        <label for="lastname">Last name</label>
+      <div class="input-group mb-3 shadow-sm">
+        <span class="input-group-text fw-bold">Aa</span>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="lastname" placeholder="Type your name" required
+            value="{{user.lastname}}" />
+          <label for="lastname">Last name</label>
+        </div>
       </div>
-    </div>
-    <div class="input-group mb-3 shadow-sm">
-      <i class="input-group-text bi bi-envelope-fill"></i>
-      <div class="form-floating">
-        <input
-          type="email"
-          class="form-control"
-          name="email"
-          placeholder="name@example.com"
-          required
-          value="{{user.email}}"
-        />
-        <label for="email">Email address</label>
+      <div class="input-group mb-3 shadow-sm">
+        <i class="input-group-text bi bi-envelope-fill"></i>
+        <div class="form-floating">
+          <input type="email" class="form-control" name="email" placeholder="name@example.com" required
+            value="{{user.email}}" />
+          <label for="email">Email address</label>
+        </div>
       </div>
-    </div>
-    <div class="input-group mb-3 shadow-sm">
-      <i class="input-group-text bi bi-facebook"></i>
-      <div class="form-floating">
-        <input
-          type="url"
-          class="form-control"
-          name="facebook"
-          placeholder="https://www.facebook.com/user-name"
-          value="{{user.facebook}}"
-        />
-        <label for="facebook">Facebook URL profile</label>
+      <div class="input-group mb-3 shadow-sm">
+        <i class="input-group-text bi bi-facebook"></i>
+        <div class="form-floating">
+          <input type="url" class="form-control" name="facebook" placeholder="https://www.facebook.com/user-name"
+            value="{{user.facebook}}" />
+          <label for="facebook">Facebook URL profile</label>
+        </div>
       </div>
-    </div>
-    <div class="input-group mb-3 shadow-sm">
-      <i class="input-group-text bi bi-twitter"></i>
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          name="twitter"
-          placeholder="@username"
-          value="{{user.twitter}}"
-        />
-        <label for="twitter">Twitter username</label>
+      <div class="input-group mb-3 shadow-sm">
+        <i class="input-group-text bi bi-twitter"></i>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="twitter" placeholder="@username" value="{{user.twitter}}" />
+          <label for="twitter">Twitter username</label>
+        </div>
       </div>
-    </div>
-    <div class="d-flex gap-3 align-items-end justify-content-between">
-      <div class="form-floating shadow-sm">
-        <textarea
-          type="text"
-          class="form-control"
-          name="about"
-          id="about"
-          placeholder="Write about you"
-        >{{user.about}}</textarea>
+      <div class="form-floating mb-3 shadow-sm">
+        <textarea type="text" class="form-control" name="about" id="about"
+          placeholder="Write about you">{{user.about}}</textarea>
         <label for="about">Write about you...</label>
       </div>
-      <button
-        type="submit"
-        class="btn btn-dark rounded-3 mt-3 justify-self-end"
-      >
+      <button type="submit" class="btn btn-dark rounded-3">
         <i class="bi bi-check-lg"></i>
         Save
       </button>
-    </div>
-  </form>
-  <div class="w-25 d-flex flex-column align-items-center gap-2">
-    <form
-      action="/picture/upload"
-      method="post"
-      enctype="multipart/form-data"
-      class="d-flex flex-column align-items-center border rounded bg-body shadow-sm gap-3 p-3"
-    >
+    </form>
+
+    <form action="/picture/upload" method="post" enctype="multipart/form-data"
+      class="form-picture w-100 flex-column align-items-center border rounded bg-body shadow-sm gap-3 p-3">
       {{#if user.UserPicture}}
-        <div class="img-thumbnail rounded-pill bg-body">
-          <div
-            class="user-picture picture-128 rounded-pill"
-            style="background-image: url(/{{user.UserPicture.name}})"
-            id="preview-picture"
-          >
-          </div>
+      <div class="img-thumbnail rounded-pill bg-body">
+        <div class="user-picture picture-128 rounded-pill" style="background-image: url(/{{user.UserPicture.name}})"
+          id="preview-picture">
         </div>
+      </div>
       {{else}}
-        <div class="img-thumbnail rounded-pill bg-body my-2 mb-2">
-          <div
-            class="user-picture picture-128 rounded-pill"
-            style="background-image: url(/img/user-profile.png)"
-            id="preview-picture"
-          >
-          </div>
+      <div class="img-thumbnail rounded-pill bg-body my-2 mb-2">
+        <div class="user-picture picture-128 rounded-pill" style="background-image: url(/img/user-profile.png)"
+          id="preview-picture">
         </div>
+      </div>
       {{/if}}
       <div class="input-group input-group-sm mb-3">
-        <label
-          for="profile-picture"
-          class="input-group-text btn btn-dark border border-dark"
-          id="border"
-        >Browse...</label>
-        <input
-          type="file"
-          class="form-control custom-input-file"
-          name="userPicture"
-          id="profile-picture"
-        />
+        <label for="profile-picture" class="input-group-text btn btn-dark border border-dark"
+          id="border">Browse...</label>
+        <input type="file" class="form-control custom-input-file" name="userPicture" id="profile-picture" />
       </div>
       <button type="submit" class="btn btn-dark rounded-3">
         <i class="bi bi-card-image"></i>
         Save Picture
       </button>
     </form>
-    <form action="/user/delete/{{user.uuid}}" method="post">
-    </form>
-    <div class="w-100 border rounded bg-body shadow-sm py-5 text-center">
-      <a
-        type="button"
-        class="btn btn-outline-danger my-5"
-        data-bs-toggle="modal"
-        data-bs-target="#userDeletionModal"
-      >
+
+    <div class="del-btn w-100 border rounded bg-body shadow-sm text-center">
+      <a type="button" class="btn btn-outline-danger my-5" data-bs-toggle="modal" data-bs-target="#userDeletionModal">
         <i class="bi bi-trash-fill"></i>
         Delete my account
       </a>
+    </div>
+
+    {{!-- Only show if the device has a large screen --}}
+    <div class="form-desktop w-25 flex-column align-items-center gap-3">
+      <form action="/picture/upload" method="post" enctype="multipart/form-data"
+        class="d-flex flex-column align-items-center border rounded bg-body shadow-sm gap-3 p-3">
+        {{#if user.UserPicture}}
+        <div class="img-thumbnail rounded-pill bg-body">
+          <div class="user-picture picture-128 rounded-pill" style="background-image: url(/{{user.UserPicture.name}})"
+            id="preview-picture-d">
+          </div>
+        </div>
+        {{else}}
+        <div class="img-thumbnail rounded-pill bg-body my-2 mb-2">
+          <div class="user-picture picture-128 rounded-pill" style="background-image: url(/img/user-profile.png)"
+            id="preview-picture-d">
+          </div>
+        </div>
+        {{/if}}
+        <div class="input-group input-group-sm mb-3">
+          <label for="profile-picture-d" class="input-group-text btn btn-dark border border-dark"
+            id="border">Browse...</label>
+          <input type="file" class="form-control custom-input-file" name="userPicture" id="profile-picture-d" />
+        </div>
+        <button type="submit" class="btn btn-dark rounded-3">
+          <i class="bi bi-card-image"></i>
+          Save Picture
+        </button>
+      </form>
+      <div class="w-100 border rounded bg-body shadow-sm py-5 text-center">
+        <a type="button" class="btn btn-outline-danger my-5" data-bs-toggle="modal" data-bs-target="#userDeletionModal">
+          <i class="bi bi-trash-fill"></i>
+          Delete my account
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Deletion Modal -->
-<div
-  class="modal fade rounded-3"
-  id="userDeletionModal"
-  tabindex="-1"
-  aria-hidden="true"
->
+<div class="modal fade rounded-3" id="userDeletionModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content px-3">
       <div class="modal-header">
         <h5 class="modal-title text-center">
           Are you sure you want to delete your account?
         </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p>
@@ -197,32 +158,18 @@
         </p>
 
         <div class="form-floating">
-          <input
-            type="email"
-            class="form-control"
-            id="confirmEmail"
-            name="confirmEmail"
-            form="userDeletionForm"
-            placeholder="yourEmail@email.com"
-          />
+          <input type="email" class="form-control" id="confirmEmail" name="confirmEmail" form="userDeletionForm"
+            placeholder="yourEmail@email.com" />
           <label for="confirmEmail">Email address</label>
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center gap-2">
-        <form
-          action="/user/delete/{{user.uuid}}"
-          method="post"
-          id="userDeletionForm"
-        >
+        <form action="/user/delete/{{user.uuid}}" method="post" id="userDeletionForm">
           <button type="submit" class="btn btn-danger rounded-3">
             Yes, delete!
           </button>
         </form>
-        <button
-          type="button"
-          class="btn btn-secondary rounded-3"
-          data-bs-dismiss="modal"
-        >Cancel</button>
+        <button type="button" class="btn btn-secondary rounded-3" data-bs-dismiss="modal">Cancel</button>
         <div class="d-flex align-items-center border">
         </div>
       </div>

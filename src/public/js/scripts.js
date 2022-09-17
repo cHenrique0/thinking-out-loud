@@ -7,11 +7,12 @@ const navList = document.querySelector(".nav-mobile");
 const navLinks = document.querySelectorAll(".nav-mobile .nav-item");
 const forms = document.querySelectorAll(".needs-validation");
 const inputImg = document.querySelector("#profile-picture");
+const inputImgD = document.querySelector("#profile-picture-d");
 const textArea = document.querySelector("#title");
 
-// Disabling form submissions if there are invalid fields
+/* Disabling form submissions if there are invalid fields */
 if (forms) {
-  // Loop over them and prevent submission
+  /* Loop over them and prevent submission */
   forms.forEach((form) => {
     form.addEventListener(
       "submit",
@@ -28,24 +29,36 @@ if (forms) {
   });
 }
 
-// Preview user profile picture
+/* Preview user profile picture - mobile device */
 if (inputImg) {
   inputImg.addEventListener("change", (event) => {
     const target = event.target;
     const files = target.files;
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      // document.querySelector("#preview-picture").src = fileReader.result;
       document.querySelector(
         "#preview-picture"
       ).style.backgroundImage = `url(${fileReader.result})`;
-      console.log(fileReader.result);
+    };
+    fileReader.readAsDataURL(files[0]);
+  });
+}
+/* Preview user profile picture - Large screen device */
+if (inputImgD) {
+  inputImgD.addEventListener("change", (event) => {
+    const target = event.target;
+    const files = target.files;
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      document.querySelector(
+        "#preview-picture-d"
+      ).style.backgroundImage = `url(${fileReader.result})`;
     };
     fileReader.readAsDataURL(files[0]);
   });
 }
 
-// Limiting characters in the text area
+/* Limiting characters in the text area */
 if (textArea) {
   const charQty = document.querySelector("#chars");
   const limit = textArea.maxLength;
