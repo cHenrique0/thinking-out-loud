@@ -4,40 +4,33 @@
   </div>
 </div>
 
-<a href="/user/profile" class="text-decoration-none mb-2">
-  <i class="bi bi-arrow-left"></i>
-  Back
-</a>
-<div class="my-3">
-  <h1 class="fw-bold">Creating thought</h1>
-</div>
-<div class="p-3 border rounded-3 w-50">
-  <form
-    action="/thoughts/create"
-    method="POST"
-    class="has-validadtion d-flex flex-column justify-content-between"
-  >
-    <div class="form-floating">
-      <textarea
-        class="form-control rounded-3"
-        placeholder="What is on your mind?"
-        id="title"
-        name="title"
-        maxlength="100"
-      ></textarea>
-      <label for="title">What is on your mind?</label>
-      <div class="d-flex justify-content-between mt-2 pe-3 mb-3">
-        <button type="submit" class="btn btn-dark rounded-3 mt-3">
-          <i class="bi bi-check-lg"></i>
-          Create
-        </button>
-        <small class="d-flex text-muted">
-          <p id="chars">100</p>/100
-        </small>
+<div class="create-thought-container">
+  <a href="/user/profile" class="text-decoration-none">
+    <i class="bi bi-arrow-left"></i>
+    Back
+  </a>
+
+  <h1 class="fw-bold mt-3">Creating thought</h1>
+
+  <div class="p-3 border rounded-3 mt-4">
+    <form action="/thoughts/create" method="POST" class="has-validadtion d-flex flex-column justify-content-between">
+      <div class="form-floating">
+        <textarea class="form-control rounded-3" placeholder="What is on your mind?" id="title" name="title"
+          maxlength="100"></textarea>
+        <label for="title">What is on your mind?</label>
+        <div class="d-flex justify-content-between mt-2 pe-3 mb-3">
+          <button type="submit" class="btn btn-dark rounded-3 mt-3">
+            <i class="bi bi-check-lg"></i>
+            Create
+          </button>
+          <small class="d-flex text-muted">
+            <p id="chars">100</p>/100
+          </small>
+        </div>
+        <div class="invalid-feedback">
+          Limit exceeded: 100 character
+        </div>
       </div>
-      <div class="invalid-feedback">
-        Limit exceeded: 100 character
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
