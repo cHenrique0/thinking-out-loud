@@ -49,6 +49,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a href="/">
+          <i class="bi bi-house-fill"></i>
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="/thoughts/create">
           <i class="bi bi-plus-lg"></i>
           New Thought
@@ -61,31 +67,59 @@
         </a>
       </li>
     </ul>
+    <div class="nav-desktop">
+      <div class="dropdown d-flex justify-content-end">
+        <a href="#" class="user-box d-flex align-items-center link-light gap-1 text-decoration-none dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="fs-6">{{session.username}}</span>
+          {{#if session.userPicture}}
+          <div class="user-picture-box rounded-pill">
+            <div class="user-picture picture-48 rounded-pill" style="background-image: url(/{{session.userPicture}})">
+            </div>
+          </div>
+          {{else}}
+          <div class="user-picture-box rounded-pill">
+            <div class="user-picture picture-48 rounded-pill" style="background-image: url(/img/user-profile.png)">
+            </div>
+          </div>
+          {{/if}}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark mx-0 border-0 shadow w-220px">
+          <li class="nav-item">
+            <a class="dropdown-item d-flex gap-2 align-items-center" href="/">
+              <i class="bi bi-house-fill"></i>
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="dropdown-item d-flex gap-2 align-items-center" href="/thoughts/create">
+              <i class="bi bi-plus-lg"></i>
+              New Thoughts
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="dropdown-item d-flex gap-2 align-items-center" href="/user/profile">
+              <i class="bi bi-person-fill"></i>
+              Profile
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider color-warning" />
+          </li>
+          <li class="nav-item">
+            <a class="dropdown-item d-flex gap-2 align-items-center" href="/logout">
+              <i class="bi bi-box-arrow-left"></i>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
     {{else}}
     <a href="/about">
       <div class="about-icon picture-48"></div>
     </a>
     {{/if}}
-    <ul class="nav-desktop">
-      <li class="nav-item">
-        <a href="#home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a href="#about">About me</a>
-      </li>
-      <li class="nav-item">
-        <a href="#education">Education</a>
-      </li>
-      <li class="nav-item">
-        <a href="#skills">Skills</a>
-      </li>
-      <li class="nav-item">
-        <a href="#projects">Projects</a>
-      </li>
-      <li class="nav-item">
-        <a href="#contacts">Contacts</a>
-      </li>
-    </ul>
   </nav>
 
   <main>
