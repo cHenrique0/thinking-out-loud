@@ -1,43 +1,24 @@
 <div class="position-relative">
   <div class="position-absolute mt-3 top-0 start-50 translate-middle">
-    {{> alert}}
+    {{!-- {{> alert}} --}}
   </div>
 </div>
 
-<div
-  class="d-flex align-items-center justify-content-between p-4 bg-body border rounded-3 shadow-sm"
->
-  {{#if search}}
-    <h3 class="fw-bold">You are looking for: "<span
-        class="fst-italic text-muted"
-      >{{search}}
-      </span>"
-    </h3>
-  {{else}}
-    <h1 class="fw-bold">All Thoughts</h1>
-  {{/if}}
-  <div class="d-flex flex-column align-items-center gap-1">
+<div class="home-container">
+  <div class="d-flex flex-column align-items-center">
     <form class="input-group shadow-sm mb-2 search" action="/home" method="GET">
-      <input
-        type="search"
-        class="form-control border-secondary"
-        name="search"
-        placeholder="Look for a thought"
-      />
+      <input type="search" class="form-control border-secondary" name="search" placeholder="Look for a thought" />
       <button type="submit" class="btn btn-dark">
         <i class="bi bi-search"></i>
       </button>
     </form>
-    <div class="d-flex align-items-center gap-2">
+    {{#if search}}
+    <div class="d-flex align-items-center gap-2 mt-2">
       <span>Order by:</span>
       <form class="m-0" action="/home" method="GET">
         <input type="hidden" name="search" value="{{this.search}}" />
         <input type="hidden" name="order" value="new" />
-        <button
-          type="submit"
-          class="btn btn-outline-dark btn-sm rounded-pill"
-          id="new"
-        >
+        <button type="submit" class="btn btn-dark btn-sm rounded-pill" id="new">
           <i class="bi bi-arrow-up"></i>
           Newer
         </button>
@@ -45,59 +26,46 @@
       <form class="m-0" action="/home" method="GET">
         <input type="hidden" name="search" value="{{this.search}}" />
         <input type="hidden" name="order" value="old" />
-        <button
-          type="submit"
-          class="btn btn-outline-dark btn-sm rounded-pill"
-          id="old"
-        >
+        <button type="submit" class="btn btn-dark btn-sm rounded-pill" id="old">
           <i class="bi bi-arrow-down"></i>
           Older
         </button>
       </form>
       <a href="/home">Clear filters</a>
     </div>
+    {{/if}}
   </div>
-</div>
 
-<hr class="my-4" />
+  <hr class="my-4" />
 
-<div class="my-3 p-3 bg-body rounded-3 shadow-sm border text-break">
-  <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
-  {{#each thoughts}}
-    <div class="d-flex justify-content-between text-muted pt-3 border-bottom">
+  <div class="my-3 p-3 bg-body rounded-3 shadow-sm border text-break">
+    {{#if search}}
+    <h6 class="fw-bold border-bottom pb-2 mb-0">You are looking for: "<span class="fst-italic text-muted">{{search}}
+      </span>"
+    </h6>
+    {{else}}
+    <h6 class="fw-bold border-bottom pb-2 mb-0">Recent updates</h6>
+    {{/if}}
+    {{#each thoughts}}
+    <div class="d-flex flex-column justify-content-between text-muted pt-3 border-bottom">
       <div class="d-flex align-items-start gap-3">
         {{#if UserPicture}}
-          <a
-            href="/user/profile/{{this.User.uuid}}"
-            class="text-decoration-none"
-          >
-            <div class="img-thumbnail rounded-pill border border-2 bg-body p-0">
-              <div
-                class="user-picture picture-40 rounded-pill"
-                style="background-image: url(/{{this.UserPicture.name}})"
-              >
-              </div>
+        <a href="/user/profile/{{this.User.uuid}}" class="text-decoration-none">
+          <div class="user-picture-box rounded-pill">
+            <div class="user-picture picture-48 rounded-pill" style="background-image: url(/{{this.UserPicture.name}})">
             </div>
-          </a>
+          </div>
+        </a>
         {{else}}
-          <a
-            href="/user/profile/{{this.User.uuid}}"
-            class="text-decoration-none"
-          >
-            <div class="img-thumbnail rounded-pill border border-2 bg-body p-0">
-              <div
-                class="user-picture picture-40 rounded-pill"
-                style="background-image: url(/img/user-header.png)"
-              >
-              </div>
+        <a href="/user/profile/{{this.User.uuid}}" class="text-decoration-none">
+          <div class="user-picture-box rounded-pill">
+            <div class="user-picture picture-48 rounded-pill" style="background-image: url(/img/user-profile.png)">
             </div>
-          </a>
+          </div>
+        </a>
         {{/if}}
         <div class="d-flex flex-column align-items-start pb-3 mb-3 lh-sm">
-          <a
-            href="/user/profile/{{this.User.uuid}}"
-            class="mb-1 opacity-75 link-primary text-decoration-none fw-bold"
-          >
+          <a href="/user/profile/{{this.User.uuid}}" class="mb-1 opacity-75 link-primary text-decoration-none fw-bold">
             {{this.User.name}}
             {{this.User.lastname}}
           </a>
@@ -106,13 +74,14 @@
           </p>
         </div>
       </div>
-      <small class="opacity-50 text-nowrap">
+      <small class="align-self-end opacity-50 text-nowrap">
         {{dateFormat this.createdAt "dddd, DD/MM/YYYY - HH:mm"}}
       </small>
     </div>
-  {{/each}}
-  {{#if noThoughts}}
+    {{/each}}
+    {{#if noThoughts}}
     <p class="mt-3 text-center">Nobody thought about it yet. You can be the
       first.</p>
-  {{/if}}
+    {{/if}}
+  </div>
 </div>

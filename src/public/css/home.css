@@ -1,0 +1,12 @@
+/* Home Styles */
+.home-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+@media (min-width: 920px) {
+  .home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
